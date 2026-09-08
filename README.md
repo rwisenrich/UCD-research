@@ -1,10 +1,45 @@
-# UCD Submission Research — Python + Colab Reproducibility
+# UCD Research
 
 [![UCD reproducibility](https://github.com/rwisenrich/UCD-research/actions/workflows/reproducibility.yml/badge.svg)](https://github.com/rwisenrich/UCD-research/actions/workflows/reproducibility.yml)
 
-This public repository is the executable reproducibility layer for the UCD mathematical-physics research program. It contains deterministic Python constructions, numerical certificates, Google Colab runners, theorem indexes, and automated GitHub Actions checks.
+This is the single public monorepo for the UCD research program. It is being expanded from the already-public executable mathematical-physics layer into the complete owner-approved public corpus: mathematics, physics, QEC, gauge theory, gravity/cosmology, matter/flavor/QCD, materials, discovery engines, software, neuroscience, archaeology, theology/source-text, experiments, publications, reproducibility and immutable historical lineages.
 
-## Quick start
+Owner-designated private or nonpublic research is outside this repository and outside the public zero-loss reconciliation target.
+
+## Whole-project structure
+
+- `00_project_control/` — canon, forensic baseline, corpus coverage, manifests, provenance and releases
+- `01_core_foundations/`
+- `02_h504_hnet/`
+- `03_qec_control/`
+- `04_gauge_yang_mills/`
+- `05_gravity_cosmology/`
+- `06_matter_flavor_qcd/`
+- `07_origin_matter_knot7/`
+- `08_pure_math_ude/`
+- `10_biophysics_neuro/`
+- `11_source_text_theology/`
+- `12_experiments_holdouts/`
+- `13_publications/`
+- `14_reproducibility/`
+- `15_archive/`
+- `16_ucdos_native_os/`
+- `17_matter_genesis_plasma_energy/`
+- `18_archaeology_metrology/`
+- `19_algorithms_of_reality/`
+- `20_future_mathematics/`
+- `21_information_time_consciousness/`
+- `22_historical_geometry_kcm/`
+
+See [`PROJECT_MAP.md`](PROJECT_MAP.md), [`00_project_control/CORPUS_COVERAGE_INDEX.md`](00_project_control/CORPUS_COVERAGE_INDEX.md), and [`00_project_control/FORENSIC_BASELINE.md`](00_project_control/FORENSIC_BASELINE.md).
+
+## Zero-loss migration rule
+
+Nothing inside the owner-approved public UCD scope is discarded because it was superseded, repaired, failed, conditional, renamed, or split from another branch. Every recovered public object gets a canonical object identity plus aliases/version/provenance links. Current canon can change; historical public source objects remain immutable.
+
+The public monorepo is not declared corpus-complete until orphan items, unmapped public source files, unresolved duplicate identities, missing historical provenance pointers, and promoted computational claims without code/verifier pointers are all zero.
+
+## Quick reproducibility start
 
 ```bash
 python -m venv .venv
@@ -14,19 +49,15 @@ pip install -r requirements.txt
 python run_python_suite.py
 ```
 
-The quick suite reruns the parent projection, central vacuum selector, many-body Hnet finite diagnostics, SU(2) quantum-link plaquette, Maxwell bridge, one-loop RG refinement, and regulator-scaled gap calculation.
-
-Run the complete public derivation suite with:
+Run the complete currently public derivation suite with:
 
 ```bash
 python run_python_suite.py --full
 ```
 
-A manually triggered full GitHub-hosted run is also available under **Actions → UCD full reproducibility → Run workflow**. Its generated `results/` directory is uploaded as an Actions artifact.
+A manually triggered full GitHub-hosted run is available under **Actions → UCD full reproducibility → Run workflow**. Generated `results/` are saved as an Actions artifact.
 
 ## Google Colab
-
-Run the public calculations directly in Google Colab:
 
 [![Open master notebook in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rwisenrich/UCD-research/blob/main/notebooks/UCD_All_Toy_Simulations_Colab.ipynb)
 
@@ -37,25 +68,4 @@ Focused notebooks:
 - [SU(2) Quantum-Link Plaquette](https://colab.research.google.com/github/rwisenrich/UCD-research/blob/main/notebooks/03_SU2_Quantum_Link_Plaquette.ipynb)
 - [Maxwell + RG + Gap](https://colab.research.google.com/github/rwisenrich/UCD-research/blob/main/notebooks/04_Maxwell_RG_Gap.ipynb)
 
-Each notebook clones this repository at runtime, installs the pinned dependency ranges, and runs the public Python derivations from the repository itself.
-
-## Live repository layout
-
-- `scripts/` — Python derivations and finite-matrix constructions
-- `results/` — baseline CSV/JSON numerical certificates
-- `notebooks/` — Colab-ready runners
-- `docs/THEOREM_INDEX.md` — theorem/result index
-- `docs/EXTERNAL_LITERATURE.md` — external literature ledger
-- `REPRODUCIBILITY.md` — paper-to-code/result map
-- `.github/workflows/` — quick CI and manually triggered full-suite CI
-- `requirements.txt` / `environment.yml` — reproducible environments
-
-The manuscript PDFs and LaTeX source are maintained as a separate publication layer so that the executable repository can be cloned and tested independently of binary paper files.
-
-## Reproducibility scope
-
-The scripts reproduce the finite algebraic constructions and numerical diagnostics registered in the corresponding research calculations. The code writes machine-readable CSV/JSON results into `results/` so independent runs can be compared directly.
-
-## Python versions
-
-CI uses Python 3.11. The public code uses NumPy, SciPy, mpmath, and Matplotlib.
+The existing root-level `scripts/`, `notebooks/`, `results/`, and workflows remain live while source material is migrated into canonical branch locations, so public Colab and CI links continue working throughout the zero-loss reconciliation.

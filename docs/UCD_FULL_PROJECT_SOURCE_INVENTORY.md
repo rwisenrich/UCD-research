@@ -1,0 +1,71 @@
+# UCD Available Public Source Inventory
+
+This inventory is generated from source packages currently mounted in the UCD project workspace and approved for the public monorepo. It is a migration inventory, not a claim that the historical archive is complete. Owner-designated private or nonpublic material is intentionally omitted.
+
+| Branch | Source artifact | Size |
+|---|---|---:|
+| Core / archive | `Explain Electricity Using UCD.txt` | 20.1 KB |
+| Core / archive | `Stitch UCD Chats.txt` | 37.1 KB |
+| Core / archive | `Summarize UCD Missing Core.txt` | 6.5 KB |
+| Core / archive | `UCD 1 Science Framework.docx` | 17.9 KB |
+| Core / archive | `UCD 3 Session Discoveries Feb26.docx` | 17.0 KB |
+| Core / archive | `UCD Diary Update April24 2026.docx` | 15.5 KB |
+| Core / archive | `UCD Vol2 Science Extended.docx` | 89.4 KB |
+| Core / archive | `UCD_504_Dic6_Gauge_Syndrome_Workbench.zip` | 10.3 KB |
+| Core / archive | `UCD_504_Master_Hamiltonian_Workbench_Package.zip` | 115.5 KB |
+| Core / archive | `UCD_504_Missing_Operators_Devised_Workbench.zip` | 10.9 KB |
+| Core / archive | `UCD_504_Ring_Gap_Theorem_Workbench.zip` | 14.4 KB |
+| Core / archive | `UCD_Addressed_Parent_YM_QLM_Attack_v3_0_FULL_PACKAGE.zip` | 77.3 KB |
+| Core / archive | `UCD_All_Toy_Simulations_Colab_EXECUTED.ipynb` | 88.2 KB |
+| Core / archive | `UCD_Final_Internal_Closure_One_Formula_TOE_Package.zip` | 191.0 KB |
+| Core / archive | `UCD_Four_Grand_Closure_Assault_v2_0_FULL_PACKAGE.zip` | 28.2 KB |
+| Core / archive | `UCD_GitHub_Colab_Release_v1_0.zip` | 4.98 MB |
+| Core / archive | `UCD_Hard_Closure_Continuation_v2_0_FULL_PACKAGE.zip` | 18.9 KB |
+| Core / archive | `UCD_Missing_Core_23_Module_Attack_v1_0_FULL_PACKAGE.zip` | 130.0 KB |
+| Core / archive | `UCD_next_pass_forward_backward_combined_Apr23_2026.docx` | 40.6 KB |
+| Core / archive | `UCD_One_Formula_TOE_Strict_Closure_Package.zip` | 370.9 KB |
+| Core / archive | `UCD_Submission_Research_Full_Release_v1_0.zip` | 4.66 MB |
+| Core / archive | `UCD_Submission_Research_Full_Release_v1_1.zip` | 4.85 MB |
+| Core / archive | `UCD_Submission_Research_Papers_v1_0.zip` | 4.55 MB |
+| Core / archive | `UCD_Submission_Research_Papers_v1_1.zip` | 4.70 MB |
+| Core / archive | `UCD_Submission_Research_Release_v2_0_FULL_PACKAGE.zip` | 7.66 MB |
+| Core / archive | `UCD_Submission_Research_Reproducibility_v1_0.zip` | 112.9 KB |
+| Core / archive | `UCD_Submission_Research_Reproducibility_v1_1.zip` | 145.3 KB |
+| Gauge / gravity / cosmology | `Black Hole UCD Simulation.txt` | 1.3 KB |
+| Gauge / gravity / cosmology | `UCD Bridge Watch.txt` | 4.6 KB |
+| Gauge / gravity / cosmology | `UCD YangMills MassGap 2.docx` | 23.2 KB |
+| Gauge / gravity / cosmology | `UCD YangMills MassGap.docx` | 23.2 KB |
+| Gauge / gravity / cosmology | `UCD_504_Fermionic_Gap_Workbench.zip` | 6.5 KB |
+| Gauge / gravity / cosmology | `UCD_Empirical_Completion_Gate_Package.zip` | 137.9 KB |
+| Gauge / gravity / cosmology | `UCD_Final_Boundary_Action_TOE_Closure_Package.zip` | 2.81 MB |
+| Gauge / gravity / cosmology | `UCD_Hnet_504_Lift_Edge_Connection_Package.zip` | 49.3 KB |
+| Gauge / gravity / cosmology | `UCD_Spectral_TOE_Closure_Inventory_Package.zip` | 4.13 MB |
+| Matter / flavor | `UCD_closure_pass_YukawaVacuumPlus_Apr22_2026.docx` | 40.1 KB |
+| Matter / flavor | `UCD_H504_Found_Formula_Audit_Package.zip` | 9.0 KB |
+| Matter / flavor | `UCD_Weak_Basis_RG_Transport_Package.zip` | 211.8 KB |
+| Origin Matter | `Validate Carbyne Protocol.txt` | 11.6 KB |
+| Pure math / UDE | `Close Open Math.txt` | 8.9 KB |
+| Pure math / UDE | `Continue persistent source quotient.txt` | 6.6 KB |
+| Pure math / UDE | `Explain Round 22 Mixing.txt` | 6.5 KB |
+| Pure math / UDE | `Living Tree daily synthesis and update summary.txt` | 5.9 KB |
+| Pure math / UDE | `UDE report update available.txt` | 7.5 KB |
+| QEC / quantum control | `UCD 504 QEC Final Bundle.zip` | 52.43 MB |
+| QEC / quantum control | `UCD_504_Control_Readout_Workbench.zip` | 29.3 KB |
+| QEC / quantum control | `UCD_504_Driven_Logical_Dynamics_Workbench.zip` | 7.7 KB |
+| QEC / quantum control | `UCD_504_Dynamical_Decoupling_Echo_Workbench.zip` | 14.7 KB |
+| QEC / quantum control | `UCD_504_Full_Cluster_Leakage_Stress_Workbench.zip` | 10.8 KB |
+| QEC / quantum control | `UCD_504_Noisy_Subsystem_Dynamics_Workbench.zip` | 343.4 KB |
+| QEC / quantum control | `UCD_504_QEC_Knill_Laflamme_Workbench.zip` | 8.6 KB |
+| QEC / quantum control | `UCD_504_Subsystem_Factorization_Workbench.zip` | 25.4 KB |
+| QEC / quantum control | `UCD_504_Subsystem_Gauge_Code_Workbench.zip` | 10.9 KB |
+| Source-text / theology | `THE TAU PROOF Companion Extended May2026.docx` | 32.9 KB |
+| Source-text / theology | `THE TAU PROOF Companion Guide.docx` | 18.7 KB |
+| Source-text / theology | `UCD 2 Theology Scripture.docx` | 17.3 KB |
+
+## Storage policy
+
+- Text, source code, notebooks, CSV/JSON certificates, and manuscript source should live directly in Git.
+- Reproducible generated arrays should be regenerated by scripts and tracked by checksum rather than committed as opaque binary state.
+- Large irreplaceable public historical binaries should use Git LFS or release assets, with SHA-256 recorded in the monorepo index.
+- Historical and superseded public branches remain immutable and must not silently overwrite current canon.
+- Every migrated public package should receive `provenance.json` containing source filename, SHA-256, branch, status, and supersession relationship.
