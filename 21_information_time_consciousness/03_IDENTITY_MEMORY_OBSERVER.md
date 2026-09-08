@@ -8,7 +8,7 @@ A physical carrier and the pattern/state identity encoded on that carrier are di
 
 The project therefore tracks:
 
-\[
+$$
 \boxed{
 \text{carrier state}
 +
@@ -16,7 +16,7 @@ The project therefore tracks:
 +
 \text{history/provenance}
 }
-\]
+$$
 
 rather than treating material location alone as the complete identity key.
 
@@ -24,9 +24,9 @@ rather than treating material location alone as the complete identity key.
 
 The `84 + detail` architecture supplies a finite model of reconstructive memory:
 
-\[
+$$
 H_{420}\cong H_{84}\otimes M_5.
-\]
+$$
 
 Coarse-visible state and retained detail jointly determine the reconstructible state. If the detail is erased, direct compression cannot be lossless.
 
@@ -36,15 +36,15 @@ A stored description of a process is not the same as the process being dynamical
 
 A generic observer-state update may be written schematically as
 
-\[
+$$
 O_{n+1}=\mathcal F(O_n,I_n,M_n),
-\]
+$$
 
 where `I_n` is new input and `M_n` is retained memory/history. A self-model adds an internal representation `S_n` of the observer's own state and dynamics:
 
-\[
+$$
 S_{n+1}=\mathcal G(S_n,O_n,I_n,M_n).
-\]
+$$
 
 The scientifically testable question is whether changing or ablating `S_n` has a measurable causal effect on later behavior, prediction, control, or integration.
 
@@ -52,9 +52,9 @@ The scientifically testable question is whether changing or ablating `S_n` has a
 
 For a reversible transformation `U`, exact state recovery satisfies
 
-\[
+$$
 \boxed{U^\dagger U=I}
-\]
+$$
 
 on the relevant state space. More general identity claims require a declared equivalence relation specifying which features must be preserved. UCD does not equate mathematical reversibility by itself with biological or personal identity.
 

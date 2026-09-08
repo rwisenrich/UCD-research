@@ -4,34 +4,34 @@ The finite registration layer is mathematically exact once its registration prem
 
 ## Dicyclic registration carrier
 
-\[
+$$
 \boxed{
 Q_{72}=Z_3\times {\rm Dic}_6
 }
-\]
+$$
 
 with
 
-\[
+$$
 \boxed{
 {\rm Dic}_6=
 \langle a,x\mid a^{12}=1,\;x^2=a^6,\;xax^{-1}=a^{-1}\rangle.
 }
-\]
+$$
 
 Hence
 
-\[
+$$
 |{\rm Dic}_6|=24,
 \qquad
 |Q_{72}|=3\cdot24=72,
 \qquad
 \tau={1\over72}.
-\]
+$$
 
 A normal-form address may be written
 
-\[
+$$
 (z,k,\epsilon),
 \qquad
 z\in Z_3,
@@ -39,11 +39,11 @@ z\in Z_3,
 k\in Z_{12},
 \quad
 \epsilon\in Z_2.
-\]
+$$
 
 The multiplication law is
 
-\[
+$$
 \boxed{
 (z,k,\epsilon)(z',\ell,\delta)=
 \bigl(
@@ -52,37 +52,37 @@ The multiplication law is
  \epsilon+\delta\!\!\pmod2
 \bigr).
 }
-\]
+$$
 
 ## Commutator quotient/detail structure
 
 The derived subgroup is
 
-\[
+$$
 \boxed{
 [Q_{72},Q_{72}]=\langle a^2\rangle,
 \qquad
 |\langle a^2\rangle|=6.
 }
-\]
+$$
 
 Therefore
 
-\[
+$$
 \boxed{
 |Q_{72}/[Q_{72},Q_{72}]|=12
 }
-\]
+$$
 
 and
 
-\[
+$$
 \boxed{72=12\times6.}
-\]
+$$
 
 The six-dimensional commutator fiber decomposes as
 
-\[
+$$
 \boxed{
 \mathbb C^6=\mathbb C u_0\oplus M_5,
 \qquad
@@ -90,7 +90,7 @@ u_0={1\over\sqrt6}(1,1,1,1,1,1)^T,
 \qquad
 \dim M_5=5.
 }
-\]
+$$
 
 ## Upstream truth boundary
 

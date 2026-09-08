@@ -8,23 +8,23 @@ Different representations do not create different mathematical facts. They expos
 
 The cartography engine therefore maintains a representation family
 
-\[
+$$
 \mathcal R_1,\ldots,\mathcal R_m
-\]
+$$
 
 for one source object `X`, together with operators
 
-\[
+$$
 \mathcal O_1,\ldots,\mathcal O_n.
-\]
+$$
 
 For each pair it records observables such as
 
-\[
+$$
 \boxed{
 C_{ij}=\|[\mathcal R_i(X),\mathcal O_j]\|
 }
-\]
+$$
 
 or the appropriate exact rank, spectrum, overlap, residual, connectivity, or invariant signature.
 
@@ -44,13 +44,13 @@ Cartography is used to:
 
 If two discoveries in different lenses prove the same mathematical relation, they should map to one canonical law object:
 
-\[
+$$
 \boxed{
 \text{same relation in different representations}
 \Rightarrow
 \text{one canonical theorem identity + multiple proof lenses}.
 }
-\]
+$$
 
 This prevents the project from inflating its evidence count by rediscovering the same fact in several encodings.
 

@@ -14,7 +14,7 @@ The branch preserves exact theorems, conditional results, countermodels, failed 
 
 The central workflow is
 
-\[
+$$
 \boxed{
 \text{intake}
 \to
@@ -32,6 +32,6 @@ The central workflow is
 \to
 \text{reuse}
 }
-\]
+$$
 
 with every promoted result tied to provenance and proof/verifier objects.

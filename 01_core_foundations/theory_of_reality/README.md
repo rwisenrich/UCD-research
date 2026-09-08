@@ -4,7 +4,7 @@ This directory records the current source-to-physics architecture as a dependenc
 
 The strict pre-physical floor is:
 
-\[
+$$
 \boxed{
 \text{Distinction}
 \rightarrow
@@ -22,7 +22,7 @@ The strict pre-physical floor is:
 \rightarrow
 \text{Actualization}
 }
-\]
+$$
 
 The corresponding UCD names are Received Otherstanding, Determinate Distinction, Relational Addressability, Stable Relational Fidelity, Constraint Persistence, Composability, Ordinal Succession, Relational Participation, and Lawful Relational Actualization.
 
@@ -37,29 +37,29 @@ The current dependency architecture distinguishes four kinds of statements:
 
 The central realized-state object is
 
-\[
+$$
 \boxed{
 \Omega_0=(\Gamma,\{W_e\},\sigma,\Pi_{\partial},\Psi_0)
 }
-\]
+$$
 
 and the executable specification is organized as
 
-\[
+$$
 \boxed{
 \mathcal U_{\rm UCD}=\mathcal L_{\rm UCD}+\Omega_0+[E_*].
 }
-\]
+$$
 
 The finite registry and local-state constructions used downstream are
 
-\[
+$$
 Q_{72}=Z_3\times {\rm Dic}_6,
 \qquad
 H_{504}=V_7\otimes\mathbb C[Q_{72}],
 \qquad
 H_{504}=H_{84}\oplus H_{420}.
-\]
+$$
 
 The August 31, 2026 remaining-gates sweep sharpened the source-to-physics boundary: bare current P0 does not by itself force global finiteness, universal history efficacy, physical additive amplitudes, physical projector-measurement semantics, physical local-cell position, primitive-link locality, or a continuum metric. The repository therefore records the strongest exact reductions without importing the desired endpoint as a premise.
 

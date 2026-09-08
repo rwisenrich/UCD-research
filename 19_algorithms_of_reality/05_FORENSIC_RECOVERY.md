@@ -27,7 +27,7 @@ The reconciliation method uses ten orthogonal passes:
 
 The final ledger is not produced by simply appending every parser hit. It must:
 
-\[
+$$
 \boxed{
 \text{recover}
 \to
@@ -41,7 +41,7 @@ The final ledger is not produced by simply appending every parser hit. It must:
 \to
 \text{attach proof/verifier objects}
 }
-\]
+$$
 
 before publication grouping.
 

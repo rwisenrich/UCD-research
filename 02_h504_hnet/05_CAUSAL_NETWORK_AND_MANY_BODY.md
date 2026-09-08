@@ -4,19 +4,19 @@
 
 For a set `M_N` of mutually disjoint active edges in causal layer `N`, a finite update may be written
 
-\[
+$$
 \boxed{
 U_N(\Omega)=
 \left(\prod_{e\in M_N}U_e\right)
 \left(\prod_v e^{-i\Delta n H(v)}\right).
 }
-\]
+$$
 
 The universe/network state evolves by
 
-\[
+$$
 \boxed{|\Psi_{N+1}\rangle=U_N(\Omega)|\Psi_N\rangle.}
-\]
+$$
 
 Disjoint/local scheduling yields finite causal cones rather than requiring a single physically fundamental simultaneous cosmic clock.
 
@@ -24,15 +24,15 @@ Disjoint/local scheduling yields finite causal cones rather than requiring a sin
 
 For a finite cell set `Lambda`, before explicit edge/controller ancillas,
 
-\[
+$$
 \boxed{\mathcal H_\Lambda=\bigotimes_{v\in\Lambda}\mathbb C^{504}.}
-\]
+$$
 
 The local observable algebra is
 
-\[
+$$
 \boxed{\mathcal A_\Lambda=M_{504^{|\Lambda|}}(\mathbb C).}
-\]
+$$
 
 A thermodynamic/continuum program requires a compatible family of finite regions and embeddings, not one fixed 504-dimensional cell alone.
 

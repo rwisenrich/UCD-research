@@ -43,13 +43,13 @@ Byte-identical evidence is counted once while all historical paths remain record
 
 The target invariant is
 
-\[
+$$
 \boxed{
 \text{one mathematical identity}
 \leftrightarrow
 \text{one canonical object ID}
 }
-\]
+$$
 
 with any number of source aliases and proof lenses.
 
@@ -57,9 +57,9 @@ with any number of source aliases and proof lenses.
 
 For canonical objects `A` and `B`, an edge
 
-\[
+$$
 A\rightarrow B
-\]
+$$
 
 means `B` explicitly depends on `A` as a premise or construction input. This graph is used to prevent a later manuscript from importing a superseded or conditional premise as though it were current canon.
 

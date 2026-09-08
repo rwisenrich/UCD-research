@@ -6,7 +6,7 @@ The UCD Theory-of-Reality branch begins before metric, field, particle, Hilbert-
 
 The current source-floor dependency is
 
-\[
+$$
 \boxed{
 \text{Received Otherstanding}
 \to
@@ -26,7 +26,7 @@ The current source-floor dependency is
 \to
 \text{Lawful Relational Actualization}
 }
-\]
+$$
 
 The mathematical content begins with distinguishable relational states and lawful continuation. Metric duration is not assumed at this level; succession is ordinal.
 
@@ -34,41 +34,41 @@ The mathematical content begins with distinguishable relational states and lawfu
 
 The present relational grammar admits an infinite model. One explicit model is
 
-\[
+$$
 X=\mathbb Z,
 \qquad
 T(n)=n+1,
 \qquad
 T^{-1}(n)=n-1,
-\]
+$$
 
 with injective addresses, ordinary composition, persistent lawful relation, ordinal succession, and participation. Therefore
 
-\[
+$$
 \boxed{
 \text{current bare Root/P0 grammar}\not\Rightarrow |X|<\infty.
 }
-\]
+$$
 
 Likewise, append-only symbolic history does not force history-sensitive future admissibility. It is possible to have
 
-\[
+$$
 (x,\varepsilon)\neq(x,RR)
-\]
+$$
 
 while
 
-\[
+$$
 L(x,\varepsilon)=L(x,RR).
-\]
+$$
 
 Hence
 
-\[
+$$
 \boxed{
 \text{symbolically distinct history}\not\Rightarrow\text{physically efficacious history}
 }
-\]
+$$
 
 without an additional continuation law.
 
@@ -83,7 +83,7 @@ then the realized tree is finite. This is the contrapositive use of König's inf
 
 Thus
 
-\[
+$$
 \boxed{
 \text{Finitary Differentiation}
 +
@@ -91,7 +91,7 @@ Thus
 \Rightarrow
 \text{Finite Registry}.
 }
-\]
+$$
 
 The theorem is exact; the two physical premises are separate obligations rather than consequences of the bare relational grammar.
 

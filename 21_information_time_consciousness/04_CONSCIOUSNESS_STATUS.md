@@ -20,13 +20,13 @@ These can support operational questions about information integration, memory, r
 
 No current theorem shows
 
-\[
+$$
 \boxed{
 \text{a particular UCD scalar or operator}
 =
 \text{subjective experience}.
 }
-\]
+$$
 
 Likewise, a high integration score, persistent quantum witness, recurrent neural state, or successful self-model ablation test would not by itself prove a unique metaphysical interpretation of consciousness.
 
@@ -40,12 +40,12 @@ The decisive form of test is comparative: if a proposed molecular quantum witnes
 
 Historical consciousness interpretations remain available in provenance/archive. Current papers should distinguish:
 
-\[
+$$
 \boxed{
 \text{information/causal model}
 \neq
 \text{demonstrated subjective-experience theory}.
 }
-\]
+$$
 
 This boundary preserves the useful mathematical and experimental work without converting an interpretation into a measured result.

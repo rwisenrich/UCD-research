@@ -6,9 +6,9 @@ This file prevents old and repaired H504/Hnet statements from being merged into 
 
 Do not state that a native rank-14 projector reduces the complete seven-term H504 algebra. The full-algebra gauge-completion result is the D84 support
 
-\[
+$$
 \boxed{D_{84}=42_{\rm logical}\times2_{\rm gauge}.}
-\]
+$$
 
 A rank-14 invariant projector may belong to a separately repaired/minimized Hamiltonian branch; it must be labeled as such.
 
@@ -24,9 +24,9 @@ Do not identify `e^{-tau}` with universal physical dissipation merely because it
 
 The local ring gap
 
-\[
+$$
 \Delta_{\rm ring}=2\kappa e^{-\tau}
-\]
+$$
 
 is a finite H504 theorem. It is not the continuum Yang-Mills mass gap. A continuum statement needs a native refinement/infinite-volume family and a positive limiting gauge-invariant gap.
 

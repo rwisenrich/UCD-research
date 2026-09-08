@@ -4,7 +4,7 @@ The Algorithms-of-Reality engine treats discovery as a controlled recursive proc
 
 ## Canonical loop
 
-\[
+$$
 \boxed{
 \text{intake}
 \rightarrow
@@ -20,7 +20,7 @@ The Algorithms-of-Reality engine treats discovery as a controlled recursive proc
 \rightarrow
 \text{Living Tree artifact}
 }
-\]
+$$
 
 Each cycle must retain:
 
@@ -38,9 +38,9 @@ When many downstream results depend on one unresolved object, that object receiv
 
 If a branch has dependencies
 
-\[
+$$
 B_1,\dots,B_n
-\]
+$$
 
 requiring unresolved object `X`, its route pressure is treated as a priority weight increasing with the downstream dependency count, while still being constrained by testability and source provenance.
 

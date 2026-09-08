@@ -6,7 +6,7 @@ UCD treats biological organization as a downstream many-body/material organizati
 
 The working hierarchy is
 
-\[
+$$
 \boxed{
 \text{quantum states}
 \rightarrow
@@ -22,7 +22,7 @@ The working hierarchy is
 \rightarrow
 \text{nervous systems}.
 }
-\]
+$$
 
 At each level, effective variables can suppress microscopic detail while retaining the collective degrees of freedom needed for prediction and control. This is conceptually aligned with the project's reconstructive coarse-graining rule: compression is legitimate only when the information needed for the declared observable or recovery task is preserved.
 
@@ -32,9 +32,9 @@ The historical UCD interpretation identifies living organization with active mai
 
 A minimal dynamical description requires a state `X`, environment `E`, and controlled fluxes `J` such that
 
-\[
+$$
 X_{n+1}=\mathcal F(X_n,E_n,J_n)
-\]
+$$
 
 and the system's internal dynamics helps keep `X_n` inside a viable region of state space despite perturbations.
 
@@ -44,7 +44,7 @@ This is a systems-level description, not a derivation of life from H504 alone.
 
 The molecular/neural program is stored separately because it adds empirical source-identification claims. Its chain is
 
-\[
+$$
 \boxed{
 \text{molecular candidate}
 \to
@@ -58,6 +58,6 @@ The molecular/neural program is stored separately because it adds empirical sour
 \to
 \text{matched-control test}.
 }
-\]
+$$
 
 The public theory branch should therefore keep biological organization and neural quantum-source claims distinct.

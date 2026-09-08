@@ -22,13 +22,13 @@ Core rules include:
 
 A failed branch is stored with its tested scope. The update rule is
 
-\[
+$$
 \boxed{
 \text{failure of candidate family }F
 \not\Rightarrow
 \text{failure of every parent structure used by }F.
 }
-\]
+$$
 
 The ledger records precisely what was falsified.
 
@@ -40,10 +40,10 @@ When a model has tunable structure, discovery and evaluation datasets must be se
 
 A target value is not allowed to appear upstream inside a derivation that later claims to predict that target unless its role is explicitly labeled calibration/input. Parent-action coefficient derivation, for example, must use
 
-\[
+$$
 J_a={1\over504}\operatorname{Tr}(T_a^\dagger K_{\rm parent}),
 \qquad
 Gc=J
-\]
+$$
 
 without importing historical coefficient targets into `K_parent` by construction.
