@@ -1,6 +1,8 @@
-# UCD Submission Research — Python + Colab Reproducibility Release
+# UCD Submission Research — Python + Colab Reproducibility
 
-This repository is the public reproducibility companion to the UCD mathematical-physics manuscript suite. It contains the papers, LaTeX sources, deterministic Python constructions, numerical theorem certificates, and Google Colab notebooks needed to rerun the finite calculations.
+[![UCD reproducibility](https://github.com/rwisenrich/UCD-research/actions/workflows/reproducibility.yml/badge.svg)](https://github.com/rwisenrich/UCD-research/actions/workflows/reproducibility.yml)
+
+This public repository is the executable reproducibility layer for the UCD mathematical-physics research program. It contains deterministic Python constructions, numerical certificates, Google Colab runners, theorem indexes, and automated GitHub Actions checks.
 
 ## Quick start
 
@@ -12,13 +14,15 @@ pip install -r requirements.txt
 python run_python_suite.py
 ```
 
-The quick suite reruns the parent projection, central vacuum selector, many-body Hnet finite diagnostics, SU(2) quantum-link plaquette, Maxwell bridge, one-loop RG refinement, and regulator-scaled gap criterion.
+The quick suite reruns the parent projection, central vacuum selector, many-body Hnet finite diagnostics, SU(2) quantum-link plaquette, Maxwell bridge, one-loop RG refinement, and regulator-scaled gap calculation.
 
-Run every Python derivation with:
+Run the complete public derivation suite with:
 
 ```bash
 python run_python_suite.py --full
 ```
+
+A manually triggered full GitHub-hosted run is also available under **Actions → UCD full reproducibility → Run workflow**. Its generated `results/` directory is uploaded as an Actions artifact.
 
 ## Google Colab
 
@@ -33,26 +37,25 @@ Focused notebooks:
 - [SU(2) Quantum-Link Plaquette](https://colab.research.google.com/github/rwisenrich/UCD-research/blob/main/notebooks/03_SU2_Quantum_Link_Plaquette.ipynb)
 - [Maxwell + RG + Gap](https://colab.research.google.com/github/rwisenrich/UCD-research/blob/main/notebooks/04_Maxwell_RG_Gap.ipynb)
 
-The master notebook is self-contained and reproduces the core public toy calculations without requiring a local checkout.
+Each notebook clones this repository at runtime, installs the pinned dependency ranges, and runs the public Python derivations from the repository itself.
 
-## Repository layout
+## Live repository layout
 
-- `papers/` — 18 peer-review-style manuscript PDFs
-- `source_tex/` — LaTeX source for the manuscripts
-- `scripts/` — deterministic Python derivations and verification code
-- `results/` — CSV/JSON theorem certificates produced by the scripts
-- `notebooks/` — Colab-ready interactive reproductions
-- `collected/` — collected manuscript volume
-- `docs/` — theorem index and literature ledger
+- `scripts/` — Python derivations and finite-matrix constructions
+- `results/` — baseline CSV/JSON numerical certificates
+- `notebooks/` — Colab-ready runners
+- `docs/THEOREM_INDEX.md` — theorem/result index
+- `docs/EXTERNAL_LITERATURE.md` — external literature ledger
+- `REPRODUCIBILITY.md` — paper-to-code/result map
+- `.github/workflows/` — quick CI and manually triggered full-suite CI
+- `requirements.txt` / `environment.yml` — reproducible environments
 
-## Reproducibility boundary
+The manuscript PDFs and LaTeX source are maintained as a separate publication layer so that the executable repository can be cloned and tested independently of binary paper files.
 
-The scripts reproduce the finite algebraic constructions and numerical diagnostics stated in the corresponding papers. Each manuscript states the mathematical hypotheses used for continuum or asymptotic theorems. Numerical toy models are labeled as such in the notebooks so that the executable layer and theorem layer remain traceable.
+## Reproducibility scope
+
+The scripts reproduce the finite algebraic constructions and numerical diagnostics registered in the corresponding research calculations. The code writes machine-readable CSV/JSON results into `results/` so independent runs can be compared directly.
 
 ## Python versions
 
-Tested with Python 3.11. The code uses NumPy, SciPy, mpmath, and Matplotlib.
-
-## Citation
-
-Until a journal DOI is assigned, cite the individual paper title and repository release/version. A `CITATION.cff` can be finalized with the repository owner/author metadata before publication.
+CI uses Python 3.11. The public code uses NumPy, SciPy, mpmath, and Matplotlib.
