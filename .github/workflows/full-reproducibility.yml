@@ -1,0 +1,27 @@
+name: UCD full reproducibility
+
+on:
+  workflow_dispatch:
+
+jobs:
+  full-suite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run all public derivations
+        run: python run_python_suite.py --full
+      - name: Upload generated result certificates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ucd-full-results
+          path: results/
