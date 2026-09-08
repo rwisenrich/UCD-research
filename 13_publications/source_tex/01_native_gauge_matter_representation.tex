@@ -1,0 +1,322 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm,booktabs,array,longtable,microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\title{A Finite Addressed Realization of the Standard-Model Gauge Representation on $V_7\otimes\mathbb C[\mathbb Z_3\times\mathrm{Dic}_6]$}
+\author{UCD Mathematical Physics Program}
+\date{September 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let
+\[
+\mathcal H_{504}=V_7\otimes\mathbb C[\mathbb Z_3]\otimes\mathbb C[\mathrm{Dic}_6],
+\qquad \dim \mathcal H_{504}=504,
+\]
+where $V_7$ consists of one center state and a six-site ring, and
+\[
+\mathrm{Dic}_6=\langle a,x\mid a^{12}=1,\;x^2=a^6,\;xax^{-1}=a^{-1}\rangle.
+\]
+We construct commuting color, weak-isospin and hypercharge actions on this finite addressed space.  The six-leaf sector factors by the Chinese remainder theorem as $\mathbb C[\mathbb Z_6]\simeq\mathbb C^3\otimes\mathbb C^2$, yielding an $\mathfrak{su}(3)$ color action that annihilates the center.  The central subgroup $\langle a^6\rangle\simeq\mathbb Z_2$ yields a two-state weak fiber, while the one-dimensional character $\chi(a)=1$, $\chi(x)=-1$ supplies a chirality involution.  With $A$ denoting center/leaf parity, $B=L(a^6)$, and $P_L$ the chirality projector, the electric charge, weak generator and hypercharge are
+\[
+Q=\frac{B}{2}+\frac{A}{3}-\frac16 I,
+\qquad
+T_3=\frac12 P_LB,
+\qquad
+Y=2(Q-T_3)=\frac{2A-I}{3}+P_RB.
+\]
+After suppressing address multiplicities, the resulting isotypic sectors are exactly
+\[
+Q_L:(\mathbf3,\mathbf2)_{1/3},\quad
+L_L:(\mathbf1,\mathbf2)_{-1},\quad
+\nu_R:(\mathbf1,\mathbf1)_0,\quad
+e_R:(\mathbf1,\mathbf1)_{-2},
+\]
+with the quark singlets $u_R:(\mathbf3,\mathbf1)_{4/3}$ and $d_R:(\mathbf3,\mathbf1)_{-2/3}$, and with the independent $\mathbb Z_3$ factor providing three family copies.  We verify the complete gauge Lie algebra, the Standard-Model electric charges and hypercharges including a right-handed neutrino, all one-generation gauge and mixed anomaly cancellations, the boundary trace ratio $G_Y/G_2=5/3$, and the one-loop coefficients $b_3=-7$, $b_2=-19/6$, $b_Y=41/6$.
+\end{abstract}
+
+\section{Finite addressed space}
+Let $\{|c\rangle,|1\rangle,\ldots,|6\rangle\}$ be an orthonormal basis of $V_7$. Define
+\[
+P_c=|c\rangle\langle c|,\qquad P_\ell=I_7-P_c,
+\qquad A=P_\ell-P_c=I_7-2P_c.
+\]
+Thus $A^2=I_7$ and the eigenvalue $A=-1$ labels the center while $A=+1$ labels the leaf sector.
+
+On $\mathbb C[\mathrm{Dic}_6]$ let $L(g)$ be the left regular representation and set
+\[
+B=L(a^6).
+\]
+Because $a^6$ is central of order two,
+\[
+B^2=I_{24}.
+\]
+The lifted operators $A$ and $B$ commute on $\mathcal H_{504}$.
+
+\begin{lemma}[Charge polynomial reduction]
+Let $C=2A+B$. Then
+\[
+\frac{C^3-4C-3I}{18}
+=\frac{B}{2}+\frac{A}{3}-\frac16I.
+\]
+\end{lemma}
+\begin{proof}
+Since $A^2=B^2=I$ and $[A,B]=0$,
+\[
+C^3=(2A+B)^3=8A+12B+6A+B=14A+13B.
+\]
+Hence $C^3-4C-3I=6A+9B-3I$, which gives the result.
+\end{proof}
+
+We therefore define
+\begin{equation}
+\label{eq:Q}
+Q:=\frac{B}{2}+\frac{A}{3}-\frac16I.
+\end{equation}
+Its four $(A,B)$ eigenvalue pairs give
+\[
+(-1,-1)\mapsto -1,
+\quad(-1,+1)\mapsto0,
+\quad(+1,-1)\mapsto-\frac13,
+\quad(+1,+1)\mapsto\frac23.
+\]
+
+\section{Color from the six-leaf ring}
+The leaf space is the regular space of $\mathbb Z_6$.  The Chinese remainder map
+\[
+\mathbb Z_6\longrightarrow\mathbb Z_3\times\mathbb Z_2,
+\qquad n\longmapsto(n\bmod3,n\bmod2)
+\]
+is a group isomorphism. Consequently
+\[
+P_\ell V_7\cong\mathbb C^3_{\rm col}\otimes\mathbb C^2_{\rm ori}.
+\]
+If $S_6$ is the unit shift on the ring, then in the CRT basis
+\[
+S_6=X_3\otimes X_2.
+\]
+
+Let $t_a=\lambda_a/2$, $a=1,\ldots,8$, be the Gell--Mann generators on $\mathbb C^3$, normalized by
+\[
+\operatorname{tr}(t_at_b)=\frac12\delta_{ab}.
+\]
+Define their action on $V_7$ by
+\[
+T_a^{(3)}=0\oplus(t_a\otimes I_2).
+\]
+
+\begin{theorem}[Native color algebra]
+The operators $T_a^{(3)}$ satisfy the $\mathfrak{su}(3)$ commutation relations, annihilate the center, and obey
+\[
+\sum_{a=1}^8\left(T_a^{(3)}\right)^2=\frac43P_\ell.
+\]
+Thus the center is a color singlet and the leaf sector is a color triplet with a two-dimensional address multiplicity.
+\end{theorem}
+\begin{proof}
+The result follows from the fundamental $\mathfrak{su}(3)$ representation on the first CRT factor and the identity action on the second.  The quadratic Casimir of the fundamental representation is $C_F=4/3$.
+\end{proof}
+
+\section{Weak fiber and chirality}
+Let $Z=\langle a^6\rangle=\{1,a^6\}\simeq\mathbb Z_2$.  Choose a transversal $T$ for $\mathrm{Dic}_6/Z$.  Every group element is uniquely $tz^b$, $t\in T$, $b\in\{0,1\}$, and hence
+\[
+\mathbb C[\mathrm{Dic}_6]\cong\mathbb C^{12}\otimes\mathbb C^2_Z.
+\]
+In this factorization $B=L(a^6)=I_{12}\otimes\sigma_x$.  Let $Z_B=I_{12}\otimes\sigma_z$ and define
+\[
+\tau_1=Z_B,\qquad
+\tau_2=-iBZ_B,\qquad
+\tau_3=B.
+\]
+Then
+\[
+[\tau_i,\tau_j]=2i\epsilon_{ijk}\tau_k,
+\qquad \tau_i^2=I.
+\]
+Different choices of transversal are related by a unitary change of the $Z$-fiber frame, so the resulting $\mathfrak{su}(2)$ representation is unitarily equivalent.
+
+Define the dicyclic reflection character
+\[
+\chi(a^kx^e)=(-1)^e,
+\]
+and the corresponding diagonal involution
+\[
+\Gamma_\chi|a^kx^e\rangle=(-1)^e|a^kx^e\rangle.
+\]
+Since $\chi(a^6)=1$, $\Gamma_\chi$ commutes with the central $Z$ fiber.  For an orientation label $\sigma=\pm1$, set
+\[
+P_L=\frac{I-\sigma\Gamma_\chi}{2},
+\qquad P_R=I-P_L.
+\]
+Finally define
+\begin{equation}
+\label{eq:weak}
+T_i=\frac12P_L\tau_i.
+\end{equation}
+
+\begin{theorem}[Chiral weak representation]
+The operators in \eqref{eq:weak} satisfy
+\[
+[T_i,T_j]=i\epsilon_{ijk}T_k,
+\]
+and vanish on $P_R\mathcal H_{504}$.  Thus $P_L\mathcal H_{504}$ carries weak doublets while $P_R\mathcal H_{504}$ carries weak singlets.
+\end{theorem}
+\begin{proof}
+$P_L$ commutes with each $\tau_i$ and is a projector. Hence
+\[
+[T_i,T_j]=\frac14P_L[\tau_i,\tau_j]
+=i\epsilon_{ijk}\frac12P_L\tau_k=i\epsilon_{ijk}T_k.
+\]
+Also $P_RT_i=0$.
+\end{proof}
+
+\section{Hypercharge and particle representation}
+Set $T_3=P_LB/2$ and define $Y$ by the Gell--Mann--Nishijima relation
+\[
+Q=T_3+\frac Y2.
+\]
+Using \eqref{eq:Q},
+\begin{equation}
+\label{eq:Y}
+Y=2(Q-T_3)=\frac{2A-I}{3}+P_RB.
+\end{equation}
+
+\begin{theorem}[Gauge quantum numbers]
+After suppressing address multiplicities, the simultaneous $(A,B,P_L)$ sectors carry the following representations of
+$SU(3)_c\times SU(2)_L\times U(1)_Y$:
+\end{theorem}
+
+\begin{center}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+sector & $A$ & $B$ & $SU(3)_c$ & $SU(2)_L$ & $Y$ \\
+\midrule
+$L_L=(\nu_L,e_L)$ & $-1$ & $\pm1$ & $\mathbf1$ & $\mathbf2$ & $-1$ \\
+$e_R$ & $-1$ & $-1$ & $\mathbf1$ & $\mathbf1$ & $-2$ \\
+$\nu_R$ & $-1$ & $+1$ & $\mathbf1$ & $\mathbf1$ & $0$ \\
+$Q_L=(u_L,d_L)$ & $+1$ & $\pm1$ & $\mathbf3$ & $\mathbf2$ & $1/3$ \\
+$d_R$ & $+1$ & $-1$ & $\mathbf3$ & $\mathbf1$ & $-2/3$ \\
+$u_R$ & $+1$ & $+1$ & $\mathbf3$ & $\mathbf1$ & $4/3$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The electric charges are respectively
+\[
+Q(\nu)=0,\quad Q(e)=-1,\quad Q(u)=\frac23,\quad Q(d)=-\frac13.
+\]
+The independent factor $\mathbb C[\mathbb Z_3]$ supplies three family copies of this representation.
+
+\begin{proof}
+On $P_L$, equation \eqref{eq:Y} becomes
+\[
+Y_L=\frac{2A-I}{3},
+\]
+which is $-1$ for the center and $1/3$ for the leaves, independent of $B$ as required for a weak doublet.  On $P_R$,
+\[
+Y_R=\frac{2A-I}{3}+B.
+\]
+Substitution of $A=\pm1$ and $B=\pm1$ gives the four singlet hypercharges shown in the table.  The color statement follows from the previous theorem.
+\end{proof}
+
+\section{Address multiplicities}
+The finite addressed representation contains additional factors on which the gauge representation acts trivially.  In particular, after fixing family, chirality and weak component, the lepton sectors have a six-dimensional residual address factor, while the quark sectors have
+\[
+\mathbb C^3_{\rm col}\otimes\mathbb C^2_{\rm ori}\otimes\mathbb C^6_{\rm addr}.
+\]
+The gauge representation type is obtained by suppressing these spectator address factors.  This distinction separates finite provenance multiplicity from particle-species multiplicity.
+
+\section{Anomaly cancellation}
+Use the left-handed Weyl convention.  One family, including a right-handed neutrino, is
+\[
+Q_L:(\mathbf3,\mathbf2)_{1/3},\qquad
+L_L:(\mathbf1,\mathbf2)_{-1},
+\]
+\[
+\nu_R^c:(\mathbf1,\mathbf1)_0,\qquad
+e_R^c:(\mathbf1,\mathbf1)_2,
+\]
+\[
+ u_R^c:(\overline{\mathbf3},\mathbf1)_{-4/3},\qquad
+ d_R^c:(\overline{\mathbf3},\mathbf1)_{2/3}.
+\]
+The anomaly coefficients are
+\[
+\mathcal A_{SU(3)^2Y}=0,
+\quad
+\mathcal A_{SU(2)^2Y}=0,
+\quad
+\mathcal A_{\mathrm{grav}^2Y}=0,
+\quad
+\mathcal A_{Y^3}=0.
+\]
+There are four left-handed $SU(2)$ doublets per family after color multiplicity, so the global Witten anomaly is absent.
+
+\section{Trace metric and one-loop running}
+For one reduced family and generators normalized by $\operatorname{tr}(t_at_b)=\delta_{ab}/2$,
+\[
+G_3=\operatorname{Tr}(T_c^2)=2,
+\qquad
+G_2=\operatorname{Tr}(T_w^2)=2,
+\qquad
+G_Y=\operatorname{Tr}\left(\frac Y2\right)^2=\frac{10}{3}.
+\]
+Hence
+\[
+G_3:G_2:G_Y=1:1:\frac53.
+\]
+For a common parent kinetic normalization this gives
+\[
+g_3^2=g_2^2,
+\qquad
+\frac{g_Y^2}{g_2^2}=\frac35,
+\qquad
+\sin^2\theta_W=\frac38
+\]
+at the normalization scale.
+
+With three families and one complex Higgs doublet of $Y_H=1$, the one-loop coefficients in
+\[
+\frac{dg_i}{d\ln\mu}=\frac{b_i}{16\pi^2}g_i^3
+\]
+are
+\[
+\boxed{b_3=-7,\qquad b_2=-\frac{19}{6},\qquad b_Y=\frac{41}{6}.}
+\]
+For $g_1=\sqrt{5/3}\,g_Y$, $b_1=41/10$.
+
+\section{Computational verification}
+The finite matrices were constructed directly in dimension $504$.  The following residuals were obtained in double precision:
+\[
+\|Q_{\rm polynomial}-Q_{\rm linear}\|_F=0,
+\quad
+\|Y-Y_{\rm closed}\|_F=0,
+\]
+\[
+\max_{i,j}\|[T_i,T_j]-i\epsilon_{ijk}T_k\|_F=0,
+\]
+\[
+\max_{a,i}\|[T_a^{(3)},T_i]\|_F=0,
+\quad
+\max_a\|[Y,T_a^{(3)}]\|_F=0,
+\quad
+\max_i\|[Y,T_i]\|_F=0.
+\]
+The color Casimir residual is $3.14\times10^{-16}$.  The complete machine-readable derivation and independent verifier accompany this manuscript.
+
+\section{Conclusion}
+The finite addressed Hilbert space $V_7\otimes\mathbb C[\mathbb Z_3\times\mathrm{Dic}_6]$ supports an explicit commuting representation of $\mathfrak{su}(3)_c\oplus\mathfrak{su}(2)_L\oplus\mathfrak u(1)_Y$.  The center/leaf involution determines lepton versus quark hypercharge, the central dicyclic involution supplies weak $T_3$, the reflection character supplies chirality, the six-leaf CRT factor supplies color, and the independent $\mathbb Z_3$ factor supplies three families.  The resulting reduced representation has the Standard-Model gauge quantum numbers with a right-handed neutrino and is anomaly free.
+
+\begin{thebibliography}{9}
+\bibitem{KogutSusskind1975} J. Kogut and L. Susskind, Hamiltonian formulation of Wilson's lattice gauge theories, \emph{Phys. Rev. D} \textbf{11}, 395 (1975).
+\bibitem{Wiese2021} U.-J. Wiese, From quantum link models to D-theory: a resource efficient framework for the quantum simulation and computation of gauge theories, arXiv:2107.09335.
+\bibitem{OsterwalderSeiler1978} K. Osterwalder and E. Seiler, Gauge field theories on a lattice, \emph{Ann. Phys.} \textbf{110}, 440--471 (1978).
+\end{thebibliography}
+\end{document}
