@@ -6,6 +6,18 @@ This is the single public monorepo for the UCD research program. It is being exp
 
 Owner-designated private or nonpublic research is outside this repository and outside the public zero-loss reconciliation target.
 
+## Start with the UCD Theory of Reality
+
+The foundational theory is now being populated first rather than leaving the numbered branches as placeholders.
+
+1. [`01_core_foundations/theory_of_reality/`](01_core_foundations/theory_of_reality/) — relational floor, realized state, finite registration, H504, dynamics/history, measurement/time/continuum, theorem frontier, and dependency chain.
+2. [`01_core_foundations/CANON.md`](01_core_foundations/CANON.md) — compact current core equation ledger.
+3. [`02_h504_hnet/`](02_h504_hnet/) — H504/H84/H420, projector and H14/D84 status, Hamiltonian/ring gap, Hnet transport, holonomy, memory, causal many-body program.
+4. [`19_algorithms_of_reality/`](19_algorithms_of_reality/) — discovery loop, Operator Cartography, shared law ledger, no-cheat promotion rules, and forensic recovery.
+5. [`21_information_time_consciousness/`](21_information_time_consciousness/) — time/causality, entropy/information, identity/memory/observer models, biological organization, and consciousness status boundary.
+
+The public foundation keeps exact theorems, conditional reductions, physical-promotion premises, realized-state data, failed branches, and historical formulations distinct so later applications cannot silently import a superseded or unproved premise.
+
 ## Whole-project structure
 
 - `00_project_control/` — canon, forensic baseline, corpus coverage, manifests, provenance and releases
