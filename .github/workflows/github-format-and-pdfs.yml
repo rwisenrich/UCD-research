@@ -1,0 +1,76 @@
+name: GitHub formatting and publication PDFs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.md'
+      - '13_publications/source_tex/**'
+      - '13_publications/PAPER_MAP.tsv'
+      - 'tools/fix_github_math.py'
+      - '.github/workflows/github-format-and-pdfs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  normalize-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Normalize Markdown for GitHub MathJax
+        run: python tools/fix_github_math.py
+
+      - name: Install LaTeX when publication sources exist
+        if: ${{ hashFiles('13_publications/source_tex/*.tex') != '' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra
+
+      - name: Compile publication PDFs and place category copies
+        if: ${{ hashFiles('13_publications/source_tex/*.tex') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p 13_publications/papers
+          rm -rf .pdfbuild
+          mkdir -p .pdfbuild
+          for tex in 13_publications/source_tex/*.tex; do
+            stem="$(basename "$tex" .tex)"
+            mkdir -p ".pdfbuild/$stem"
+            cp "$tex" ".pdfbuild/$stem/$stem.tex"
+            (
+              cd ".pdfbuild/$stem"
+              pdflatex -interaction=nonstopmode -halt-on-error "$stem.tex"
+              pdflatex -interaction=nonstopmode -halt-on-error "$stem.tex"
+            )
+            cp ".pdfbuild/$stem/$stem.pdf" "13_publications/papers/$stem.pdf"
+          done
+
+          if [ -f 13_publications/PAPER_MAP.tsv ]; then
+            while IFS=$'\t' read -r stem branch; do
+              [ -z "$stem" ] && continue
+              [[ "$stem" == \#* ]] && continue
+              mkdir -p "$branch/papers"
+              cp "13_publications/papers/$stem.pdf" "$branch/papers/$stem.pdf"
+            done < 13_publications/PAPER_MAP.tsv
+          fi
+
+      - name: Commit normalized Markdown and generated PDFs
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .pdfbuild
+          if git diff --quiet && [ -z "$(git status --porcelain)" ]; then
+            echo 'No generated changes.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Normalize GitHub math and build publication PDFs'
+          git push
