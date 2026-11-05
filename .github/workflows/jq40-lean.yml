@@ -18,4 +18,4 @@ jobs:
         run: |
           curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain leanprover/lean4:v4.24.0
       - name: Compile JQ40 proof
-        run: "$HOME/.elan/bin/lean" 14_pnp/jq40/JQ40SourceObservable.lean
+        run: $HOME/.elan/bin/lean 14_pnp/jq40/JQ40SourceObservable.lean
