@@ -1,0 +1,21 @@
+name: JQ40 Lean kernel verification
+on:
+  push:
+    branches: [jq40-source-observation-2026-11-05]
+    paths:
+      - '14_pnp/jq40/**'
+      - '.github/workflows/jq40-lean.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lean-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean 4 via elan
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain leanprover/lean4:v4.24.0
+      - name: Compile JQ40 proof
+        run: "$HOME/.elan/bin/lean" 14_pnp/jq40/JQ40SourceObservable.lean
