@@ -1,14 +1,9 @@
 import Lean
 
-/-!
-UCD JQ40 exact source-observable fiber pairing.
-The full GF(2) rank formula is proved in the accompanying manuscript.
-This module formally checks the signed-pair and observable-bit lemmas.
-No sorry, admit, or custom axiom.
--/
+/-! UCD JQ40: finite source-observable pairing and character cancellation.
+No sorry, admit, or auxiliary axioms. -/
 
 namespace UCDJQ40
-
 def sign (b : Bool) : Int := if b then -1 else 1
 def zeroIndicator (b : Bool) : Nat := if b then 0 else 1
 def oneIndicator (b : Bool) : Nat := if b then 1 else 0
@@ -31,6 +26,20 @@ def pairedSign {alpha : Type} (xs : List alpha)
   | x :: more => sign (observe x) + sign (observe (shift x)) +
       pairedSign more observe shift
 
+def pairedZeros {alpha : Type} (xs : List alpha)
+    (observe : alpha -> Bool) (shift : alpha -> alpha) : Nat :=
+  match xs with
+  | [] => 0
+  | x :: more => zeroIndicator (observe x) +
+      zeroIndicator (observe (shift x)) + pairedZeros more observe shift
+
+def pairedOnes {alpha : Type} (xs : List alpha)
+    (observe : alpha -> Bool) (shift : alpha -> alpha) : Nat :=
+  match xs with
+  | [] => 0
+  | x :: more => oneIndicator (observe x) +
+      oneIndicator (observe (shift x)) + pairedOnes more observe shift
+
 theorem signed_fiber_cancellation {alpha : Type} (xs : List alpha)
     (observe : alpha -> Bool) (shift : alpha -> alpha)
     (hflip : forall x, observe (shift x) = !(observe x)) :
@@ -39,6 +48,16 @@ theorem signed_fiber_cancellation {alpha : Type} (xs : List alpha)
   | nil => rfl
   | cons x more ih =>
       simp [pairedSign, hflip x, sign_pair_cancels, ih]
+
+theorem paired_zero_one_counts {alpha : Type} (xs : List alpha)
+    (observe : alpha -> Bool) (shift : alpha -> alpha)
+    (hflip : forall x, observe (shift x) = !(observe x)) :
+    pairedZeros xs observe shift = pairedOnes xs observe shift := by
+  induction xs with
+  | nil => rfl
+  | cons x more ih =>
+      simp [pairedZeros, pairedOnes, hflip x,
+        complementary_zero_count, complementary_one_count, ih]
 
 theorem bit_translation_involution (x k : Bool) :
     Bool.xor (Bool.xor x k) k = x := by
