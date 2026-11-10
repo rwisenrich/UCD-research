@@ -41,6 +41,7 @@ jobs:
           auto-config: false
           build: true
           leanchecker: true
+          leanchecker-args: UCDVerification
           use-mathlib-cache: true
 
   exact-python:
