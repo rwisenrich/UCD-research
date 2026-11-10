@@ -20,7 +20,6 @@ theorem addressed_lossless {P D : Type*} (state : P × D) :
 theorem scalar_schur_identity (a b c d : ℝ) (hd : d ≠ 0) :
     (a - b * (c / d)) * d = a * d - b * c := by
   field_simp
-  ring
 
 /-- Polynomial form of the positive two-level spectral discriminant. -/
 theorem two_level_discriminant (a d b : ℝ) :
