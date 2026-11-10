@@ -1,0 +1,44 @@
+name: UCD v21 four-frontier full simulation
+
+on:
+  push:
+    branches:
+      - main
+      - ucd/v21-lean-ci-2026-11-10
+    paths:
+      - 'verification/ucd_v21/four_frontiers/**'
+      - '.github/workflows/ucd-v21-frontiers.yml'
+  pull_request:
+    paths:
+      - 'verification/ucd_v21/four_frontiers/**'
+      - '.github/workflows/ucd-v21-frontiers.yml'
+  schedule:
+    - cron: '37 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-frontiers:
+    name: Regenerate SU3 / H504 / gravity / electroweak / QEC
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install scientific computing toolchain
+        run: python -m pip install -r verification/ucd_v21/requirements-ci.txt
+      - name: Execute fresh 4D Nt=8 SU3 and three other frontiers
+        working-directory: verification/ucd_v21/four_frontiers
+        shell: bash
+        run: bash ./run_full_ci.sh
+      - name: Retain raw trajectories, certificates and execution logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ucd-v21-four-frontiers-fresh-simulation
+          path: verification/ucd_v21/four_frontiers/results/
+          retention-days: 30

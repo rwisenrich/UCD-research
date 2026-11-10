@@ -1,0 +1,85 @@
+name: UCD v21 Lean 4 and exact mathematics
+
+on:
+  push:
+    branches:
+      - main
+      - ucd/v21-lean-ci-2026-11-10
+    paths:
+      - 'verification/ucd_v21/**'
+      - '.github/workflows/ucd-v21-lean.yml'
+  pull_request:
+    paths:
+      - 'verification/ucd_v21/**'
+      - '.github/workflows/ucd-v21-lean.yml'
+  schedule:
+    - cron: '23 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kernel-lean:
+    name: Lean 4 / Mathlib kernel
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - name: Initialize pinned Lean and Mathlib dependency manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          export PATH="$HOME/.elan/bin:$PATH"
+          cd verification/ucd_v21/lean4
+          lake update
+      - name: Compile the pinned UCD v21 Lean library and run leanchecker
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: verification/ucd_v21/lean4
+          auto-config: false
+          build: true
+          leanchecker: true
+          leanchecker-args: UCDVerification
+          use-mathlib-cache: true
+
+  exact-python:
+    name: Exact matrix and geometry certificates
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact-math dependencies
+        run: python -m pip install -r verification/ucd_v21/requirements-ci.txt
+      - name: Execute the unmodified v21 mathematical verification sources
+        working-directory: verification/ucd_v21
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results
+          python checks/qec_algebra.py | tee results/group-ring.log
+          python checks/verify_v21_six_perspective_equivalence.py | tee results/v21-checks.log
+          python checks/exact_qec_distance.py | tee results/qec-distance.log
+          python checks/bb_12x6_reference.py | tee results/abelian-reference.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("results")
+          r = json.loads((root/"v21_certificate.json").read_text())
+          d = json.loads((root/"exact_Dic6_144_12_5_certificate.json").read_text())
+          b = json.loads((root/"bb_reference.json").read_text())
+          assert r["passed"] == r["total"] == 36
+          assert d["distance"] == 5
+          assert b["rank_X"] == b["rank_Z"] == 66
+          print("UCD v21 exact gate: PASS; 36/36; Dic6 CSS d=5; abelian reference k=12")
+          PY
+      - name: Save exact run logs and certificates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ucd-v21-exact-python
+          path: verification/ucd_v21/results/
