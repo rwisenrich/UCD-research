@@ -26,6 +26,14 @@ jobs:
     timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
+      - name: Initialize pinned Lean and Mathlib dependency manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          export PATH="$HOME/.elan/bin:$PATH"
+          cd verification/ucd_v21/lean4
+          lake update
       - name: Compile the pinned UCD v21 Lean library and run leanchecker
         uses: leanprover/lean-action@v1
         with:
