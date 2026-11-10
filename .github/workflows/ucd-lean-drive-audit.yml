@@ -1,0 +1,79 @@
+name: UCD recovered Drive Lean - isolated audit
+on:
+  push:
+    branches:
+      - ucd/lean-drive-audit-2026-11-10
+    paths:
+      - 'verification/ucd_v21/lean4/archive/**'
+      - '.github/workflows/ucd-lean-drive-audit.yml'
+  pull_request:
+    paths:
+      - 'verification/ucd_v21/lean4/archive/**'
+      - '.github/workflows/ucd-lean-drive-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  recovered-lean:
+    name: Verify all recovered Drive Lean modules
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - name: Initialize pinned Lean4 and Mathlib
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          export PATH="$HOME/.elan/bin:$PATH"
+          cd verification/ucd_v21/lean4
+          lake update
+      - name: Build the existing UCD v21 library
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: verification/ucd_v21/lean4
+          auto-config: false
+          build: true
+          use-mathlib-cache: true
+      - name: Compile archived modules without editing their original source
+        shell: bash
+        run: |
+          set -uo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          cd verification/ucd_v21/lean4
+          mkdir -p archive-audit-logs
+          printf 'file,verbatim,mathlib_context\n' > archive-audit-logs/status.csv
+          incomplete=0
+          for src in archive/*.lean; do
+            filename=$(basename "$src")
+            echo "::group::$filename"
+            verbatim=FAIL
+            context=NOT_NEEDED
+            if lake env lean "$src" > "archive-audit-logs/$filename.raw.log" 2>&1; then
+              verbatim=PASS
+            else
+              temp="archive-audit-logs/$filename.compat.lean"
+              printf 'import Mathlib\n' > "$temp"
+              cat "$src" >> "$temp"
+              if lake env lean "$temp" > "archive-audit-logs/$filename.compat.log" 2>&1; then
+                context=PASS
+              else
+                context=FAIL
+                incomplete=$((incomplete+1))
+              fi
+            fi
+            printf '%s,%s,%s\n' "$filename" "$verbatim" "$context" >> archive-audit-logs/status.csv
+            if [ "$verbatim" = FAIL ]; then tail -n 5 "archive-audit-logs/$filename.raw.log"; fi
+            if [ "$context" = FAIL ]; then tail -n 20 "archive-audit-logs/$filename.compat.log"; fi
+            echo "::endgroup::"
+          done
+          cat archive-audit-logs/status.csv
+          echo "Failed even with explicit Mathlib context: $incomplete"
+          test "$incomplete" -eq 0
+      - name: Upload source-compilation logs and status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ucd-drive-lean-audit-logs
+          path: verification/ucd_v21/lean4/archive-audit-logs/
+          retention-days: 30
