@@ -5,6 +5,7 @@ mkdir -p results/hot_runs
 python code/electroweak_chiral.py > results/electroweak-run.log
 python code/gravity_spin2_bounce.py > results/gravity-run.log
 python code/q72_group_css.py > results/native-dic6-run.log
+python code/q72_search_distance.py > results/native-dic6-optimized-run.log
 python code/qec_distance12_concat.py > results/qec-concatenation-run.log
 python code/h504_character_spectrum.py > results/h504-spectrum-run.log
 python code/glueball_nt8.py --beta 16 --L 3 --nt 8 --warm 300 --measure 80 --stride 3 --angle 0.18 --hot --seed 1016001 --out results/hot_runs > results/MC-hot-16.log
