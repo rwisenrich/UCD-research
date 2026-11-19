@@ -29,3 +29,7 @@ paths, saving per-file logs. A static 'zero sorry' scan never substitutes for th
 
 This branch is for review; main is not modified. No broad theorem claims are
 silently changed to match narrower Lean statements.
+
+## Second repair after initial external compiler run
+
+Actual GitHub Lean 4.14.0 compilation discovered an invalid `rec` field name in AddressedCalculusCore (it collides with the generated recursor) and a missing pair of commutativity hypotheses for its abstract discrete Leibniz theorem. The corrected ZIP renames that field to `record`, makes additive/multiplicative commutativity explicit fields of `DiffRing`, and repairs the proof using those hypotheses. An older v18 companion's unbound `State` type binders were also corrected. These amendments are documented in the ZIP README; no claimed noncommutative Leibniz theorem is certified. The compiler now attempts every proof source and saves individual logs even after a prerequisite failure.

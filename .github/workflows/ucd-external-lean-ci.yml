@@ -28,7 +28,7 @@ jobs:
           python - <<'PY'
           import hashlib, pathlib, zipfile
           source=pathlib.Path('verification/adversarial/input/UCD_External_Testing_and_Lean4_CI_Kit_CORRECTED.zip')
-          expected='0b78dcd9d71df87bacf4dac9c3f0adf88296c4d0382d7f515c61a7094e8f9703'
+          expected='eae7142c8e8cc1977335008b7dba14f2c30ea9e10fc175bb540a51d0f1b3ad27'
           assert hashlib.sha256(source.read_bytes()).hexdigest()==expected, 'ZIP digest mismatch'
           out=pathlib.Path('verification/adversarial/run')
           out.mkdir(parents=True,exist_ok=True)
@@ -68,7 +68,7 @@ jobs:
           python - <<'PY'
           import hashlib, pathlib, zipfile
           source=pathlib.Path('verification/adversarial/input/UCD_External_Testing_and_Lean4_CI_Kit_CORRECTED.zip')
-          expected='0b78dcd9d71df87bacf4dac9c3f0adf88296c4d0382d7f515c61a7094e8f9703'
+          expected='eae7142c8e8cc1977335008b7dba14f2c30ea9e10fc175bb540a51d0f1b3ad27'
           assert hashlib.sha256(source.read_bytes()).hexdigest()==expected
           out=pathlib.Path('verification/adversarial/run')
           out.mkdir(parents=True,exist_ok=True)
