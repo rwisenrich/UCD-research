@@ -1,9 +1,9 @@
-# UCD consolidation recovery — 19 November 2026
+# UCD recovery status — 2026-11-19
 
-The task is to recover the accessible UCD Google Drive corpus, consolidate its mathematics into one theory, compile and inspect the Lean proofs, reproduce computational checks, and upload the complete reconstruction to the review branch.
+## Saved checkpoint
 
-This first durable checkpoint saves 9 original project-source objects and the exact-byte verifier. Additional source objects, newer Drive manuscripts, repaired proof sources, executable checks, and the crosswalk are still being integrated. Progress is saved incrementally so no completed upload depends on a final large archive transfer.
+18 original attached source packages/documents have been preserved unchanged and indexed with exact byte integrity. This extends the first nine-workbench checkpoint. `main` is unchanged; the work remains in draft PR #4.
 
-The predecessor is commit `2133a2e53b67e369e975889b6d613036f0f74b5c`. Historical evidence remains intact. Current repair results will be distinguished from earlier compiler results, and full mathematical claims will be distinguished from the exact formal statements compiled.
+## Active integration
 
-Main remains the previously accepted checkpoint. This work continues in draft PR #4. Owner-excluded Bitcoin, mining, and cryptographic research are outside the new public consolidation.
+The recovered Lean corpus contains 97 proof-source paths and two build configuration files. A complete compiler and axiom audit is running. Six false original claims are retained as propositions with checked refutations and separate corrected results. Numerical replays and the consolidated reading edition are being assembled. These are work-in-progress facts, not a final all-pass certification.

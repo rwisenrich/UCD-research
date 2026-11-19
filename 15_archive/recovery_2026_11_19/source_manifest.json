@@ -1,10 +1,10 @@
 {
   "format_version": 1,
   "snapshot_date": "2026-11-19",
-  "scope": "First durable recovery checkpoint; remaining source objects are being uploaded.",
+  "scope": "Second recovery checkpoint: 18 unchanged, reviewed attached historical sources. Lean, numerics, remaining sources and consolidated book are being integrated.",
   "complete_ucd_corpus": false,
-  "source_count": 9,
-  "total_source_bytes": 472171,
+  "source_count": 18,
+  "total_source_bytes": 759022,
   "sources": [
     {
       "filename": "01-UCD_504_Subsystem_Factorization_Workbench.zip",
@@ -120,6 +120,123 @@
           "path": "15_archive/recovery_2026_11_19/files/09-UCD_504_Full_Cluster_Leakage_Stress_Workbench.zip",
           "size_bytes": 11026,
           "sha256": "2877c43706ba940ff908d440da9a7227aa875d1b0d7b68133b836dfa44683472"
+        }
+      ]
+    },
+    {
+      "filename": "10-UCD_504_Ring_Gap_Theorem_Workbench.zip",
+      "provenance": "attached UCD project source",
+      "sha256": "1bbd832e1cb38828c6cbc83ea435bf1a640853c6ecbf5577a71fa3b9d7ae2d59",
+      "size_bytes": 14718,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/10-UCD_504_Ring_Gap_Theorem_Workbench.zip",
+          "size_bytes": 14718,
+          "sha256": "1bbd832e1cb38828c6cbc83ea435bf1a640853c6ecbf5577a71fa3b9d7ae2d59"
+        }
+      ]
+    },
+    {
+      "filename": "11-UCD_504_Fermionic_Gap_Workbench.zip",
+      "provenance": "attached UCD project source",
+      "sha256": "91e872e5ce62ea431c15d2ced2c267f6347197a4e5698e42c6a8932b623ee22a",
+      "size_bytes": 6615,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/11-UCD_504_Fermionic_Gap_Workbench.zip",
+          "size_bytes": 6615,
+          "sha256": "91e872e5ce62ea431c15d2ced2c267f6347197a4e5698e42c6a8932b623ee22a"
+        }
+      ]
+    },
+    {
+      "filename": "12-UCD_504_Master_Hamiltonian_Workbench_Package.zip",
+      "provenance": "attached UCD project source",
+      "sha256": "5d742921bc9cec7aa127dc9ffd3fded2b45b3a07efb1f58f535b11056d94ae07",
+      "size_bytes": 118269,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/12-UCD_504_Master_Hamiltonian_Workbench_Package.zip",
+          "size_bytes": 118269,
+          "sha256": "5d742921bc9cec7aa127dc9ffd3fded2b45b3a07efb1f58f535b11056d94ae07"
+        }
+      ]
+    },
+    {
+      "filename": "13-THE-TAU-PROOF-Companion-Guide.docx",
+      "provenance": "attached UCD project source",
+      "sha256": "0f9f4ecdc4bdbb617769aeec303aecfc70d2fa07b36739c66741cc19b8c74cc3",
+      "size_bytes": 19182,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/13-THE-TAU-PROOF-Companion-Guide.docx",
+          "size_bytes": 19182,
+          "sha256": "0f9f4ecdc4bdbb617769aeec303aecfc70d2fa07b36739c66741cc19b8c74cc3"
+        }
+      ]
+    },
+    {
+      "filename": "14-UCD-1-Science-Framework.docx",
+      "provenance": "attached UCD project source",
+      "sha256": "9d2d3a62798fef037870fd19a63e134b4b87a21831864e3d7a9ebf4b05d83b78",
+      "size_bytes": 18364,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/14-UCD-1-Science-Framework.docx",
+          "size_bytes": 18364,
+          "sha256": "9d2d3a62798fef037870fd19a63e134b4b87a21831864e3d7a9ebf4b05d83b78"
+        }
+      ]
+    },
+    {
+      "filename": "16-UCD-Diary-Update-April24-2026.docx",
+      "provenance": "attached UCD project source",
+      "sha256": "ed3bc7d4df93b22b817de5866fc9e089786698ff0a903c0de6add5888570ff65",
+      "size_bytes": 15871,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/16-UCD-Diary-Update-April24-2026.docx",
+          "size_bytes": 15871,
+          "sha256": "ed3bc7d4df93b22b817de5866fc9e089786698ff0a903c0de6add5888570ff65"
+        }
+      ]
+    },
+    {
+      "filename": "18-UCD_closure_pass_YukawaVacuumPlus_Apr22_2026.docx",
+      "provenance": "attached UCD project source",
+      "sha256": "a0bbade6749a81c075f235ec90fc7a1cab9d07f49c16b60b9033079374bd1d70",
+      "size_bytes": 41037,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/18-UCD_closure_pass_YukawaVacuumPlus_Apr22_2026.docx",
+          "size_bytes": 41037,
+          "sha256": "a0bbade6749a81c075f235ec90fc7a1cab9d07f49c16b60b9033079374bd1d70"
+        }
+      ]
+    },
+    {
+      "filename": "19-UCD_504_Missing_Operators_Devised_Workbench.zip",
+      "provenance": "attached UCD project source",
+      "sha256": "0cd41d260fa8a4a2e70f85a68efa56efc63c60201d10d6bccac90d09ff7aaa34",
+      "size_bytes": 11183,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/19-UCD_504_Missing_Operators_Devised_Workbench.zip",
+          "size_bytes": 11183,
+          "sha256": "0cd41d260fa8a4a2e70f85a68efa56efc63c60201d10d6bccac90d09ff7aaa34"
+        }
+      ]
+    },
+    {
+      "filename": "20-UCD_next_pass_forward_backward_combined_Apr23_2026.docx",
+      "provenance": "attached UCD project source",
+      "sha256": "96a1b2d46b92dbfe71967ff3f9e94ce3c947e2a7691c4660ac25709064b4e5cf",
+      "size_bytes": 41612,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/20-UCD_next_pass_forward_backward_combined_Apr23_2026.docx",
+          "size_bytes": 41612,
+          "sha256": "96a1b2d46b92dbfe71967ff3f9e94ce3c947e2a7691c4660ac25709064b4e5cf"
         }
       ]
     }
