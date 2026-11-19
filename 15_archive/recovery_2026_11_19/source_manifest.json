@@ -1,0 +1,127 @@
+{
+  "format_version": 1,
+  "snapshot_date": "2026-11-19",
+  "scope": "First durable recovery checkpoint; remaining source objects are being uploaded.",
+  "complete_ucd_corpus": false,
+  "source_count": 9,
+  "total_source_bytes": 472171,
+  "sources": [
+    {
+      "filename": "01-UCD_504_Subsystem_Factorization_Workbench.zip",
+      "provenance": "attached UCD project source",
+      "sha256": "7bb42961054a1381f4f8553a3dd120ac5e4f6934f39df89fac4e6847e2aeeae3",
+      "size_bytes": 25989,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/01-UCD_504_Subsystem_Factorization_Workbench.zip",
+          "size_bytes": 25989,
+          "sha256": "7bb42961054a1381f4f8553a3dd120ac5e4f6934f39df89fac4e6847e2aeeae3"
+        }
+      ]
+    },
+    {
+      "filename": "02-UCD_504_Dic6_Gauge_Syndrome_Workbench.zip",
+      "provenance": "attached UCD project source",
+      "sha256": "38712e1c553d1f11f55b6f71cbdb3476f325b69289488f35e1245da9e1636897",
+      "size_bytes": 10526,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/02-UCD_504_Dic6_Gauge_Syndrome_Workbench.zip",
+          "size_bytes": 10526,
+          "sha256": "38712e1c553d1f11f55b6f71cbdb3476f325b69289488f35e1245da9e1636897"
+        }
+      ]
+    },
+    {
+      "filename": "03-UCD_504_QEC_Knill_Laflamme_Workbench.zip",
+      "provenance": "attached UCD project source",
+      "sha256": "ea57f890892e525b75032d812c48b586796d925899d91f1b5fa08c5926650bfd",
+      "size_bytes": 8820,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/03-UCD_504_QEC_Knill_Laflamme_Workbench.zip",
+          "size_bytes": 8820,
+          "sha256": "ea57f890892e525b75032d812c48b586796d925899d91f1b5fa08c5926650bfd"
+        }
+      ]
+    },
+    {
+      "filename": "04-UCD_504_Dynamical_Decoupling_Echo_Workbench.zip",
+      "provenance": "attached UCD project source",
+      "sha256": "906af80f7088237cc857ed2322c282d87a2df9c0be075a2e47323e92f4938143",
+      "size_bytes": 15075,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/04-UCD_504_Dynamical_Decoupling_Echo_Workbench.zip",
+          "size_bytes": 15075,
+          "sha256": "906af80f7088237cc857ed2322c282d87a2df9c0be075a2e47323e92f4938143"
+        }
+      ]
+    },
+    {
+      "filename": "05-UCD_504_Driven_Logical_Dynamics_Workbench.zip",
+      "provenance": "attached UCD project source",
+      "sha256": "e17fea08b51d052abb9b16962534dc244a2279b2f5783a046063dbc3415dadc3",
+      "size_bytes": 7883,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/05-UCD_504_Driven_Logical_Dynamics_Workbench.zip",
+          "size_bytes": 7883,
+          "sha256": "e17fea08b51d052abb9b16962534dc244a2279b2f5783a046063dbc3415dadc3"
+        }
+      ]
+    },
+    {
+      "filename": "06-UCD_504_Noisy_Subsystem_Dynamics_Workbench.zip",
+      "provenance": "attached UCD project source",
+      "sha256": "f997001e9c6b1a00f8cfda095415e0831875e9a48d9f600e4a8e824a23486f44",
+      "size_bytes": 351652,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/06-UCD_504_Noisy_Subsystem_Dynamics_Workbench.zip",
+          "size_bytes": 351652,
+          "sha256": "f997001e9c6b1a00f8cfda095415e0831875e9a48d9f600e4a8e824a23486f44"
+        }
+      ]
+    },
+    {
+      "filename": "07-UCD_504_Control_Readout_Workbench.zip",
+      "provenance": "attached UCD project source",
+      "sha256": "f1e8de1de8b5aae56ce8f0fca888767bfeb5e86f2ada7bd5816a7f93e027df70",
+      "size_bytes": 30027,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/07-UCD_504_Control_Readout_Workbench.zip",
+          "size_bytes": 30027,
+          "sha256": "f1e8de1de8b5aae56ce8f0fca888767bfeb5e86f2ada7bd5816a7f93e027df70"
+        }
+      ]
+    },
+    {
+      "filename": "08-UCD_504_Subsystem_Gauge_Code_Workbench.zip",
+      "provenance": "attached UCD project source",
+      "sha256": "3fd31259f80efd71f12573003e561b7d0795338baec1c7c1789bb1da677da4b9",
+      "size_bytes": 11173,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/08-UCD_504_Subsystem_Gauge_Code_Workbench.zip",
+          "size_bytes": 11173,
+          "sha256": "3fd31259f80efd71f12573003e561b7d0795338baec1c7c1789bb1da677da4b9"
+        }
+      ]
+    },
+    {
+      "filename": "09-UCD_504_Full_Cluster_Leakage_Stress_Workbench.zip",
+      "provenance": "attached UCD project source",
+      "sha256": "2877c43706ba940ff908d440da9a7227aa875d1b0d7b68133b836dfa44683472",
+      "size_bytes": 11026,
+      "parts": [
+        {
+          "path": "15_archive/recovery_2026_11_19/files/09-UCD_504_Full_Cluster_Leakage_Stress_Workbench.zip",
+          "size_bytes": 11026,
+          "sha256": "2877c43706ba940ff908d440da9a7227aa875d1b0d7b68133b836dfa44683472"
+        }
+      ]
+    }
+  ]
+}
