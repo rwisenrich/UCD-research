@@ -44,3 +44,8 @@ The second external run compiled **41/74** proof-source paths and reported 33 fa
 ## Fourth theorem-preserving proof pass
 
 After round 3 GitHub Lean CI compiled 48/74 proof sources and failed 26. Six further algebraically valid theorem statements now receive strictly proof-tactic rewrites (distributivity, commutativity, and linear arithmetic), with no changes to physical constants or claims. Results must be confirmed by the fourth GitHub CI run before any success count is updated.
+
+## Fifth pass: a substantive routing bug found and corrected
+The earlier `expectedBobSector12` used `r_B=-r` for both reflection values. Direct evaluation of `h=x*g^{-1}` with the included Dic6 multiplication and inverse gives `r_B=(-1)^e*r mod 3`, `p_B=p`, `e_B=1-e`. The old formula is wrong for 8/24 group elements. The corrected formula is right for 24/24 and bijective onto all 12 sectors. A pure-Python exhaustive regression and the original Lean decidable theorem now test this law, but do **not** by themselves prove any full channel-capacity claim.
+
+In round 4 CI, 49/74 Lean proof sources compiled, 25 failed. Five of six unsuccessful proof rewrites were reverted; only the successfully compiled PreprintSweep cancellation proof is retained. The Bob theorem is the sole new substantive finite group-law change in this pass, to be checked by GitHub Actions.

@@ -28,7 +28,7 @@ jobs:
           python - <<'PY'
           import hashlib, pathlib, zipfile
           source=pathlib.Path('verification/adversarial/input/UCD_External_Testing_and_Lean4_CI_Kit_CORRECTED.zip')
-          expected='10ca4ec26767b53c7d8eec536a968315eb743841d90b5c704891b0bb4ea41e9e'
+          expected='a2401cd05dfc21d32064cc3f5c5d1f56e089b5b881e50d9b10ba22dd3c82c08f'
           assert hashlib.sha256(source.read_bytes()).hexdigest()==expected, 'ZIP digest mismatch'
           out=pathlib.Path('verification/adversarial/run')
           out.mkdir(parents=True,exist_ok=True)
@@ -42,6 +42,9 @@ jobs:
       - name: Verify independent statistical, dispersion and source-inventory controls
         working-directory: verification/adversarial/run
         run: python stress_test/ucd_adversarial_stress_test.py --output results/stress_test_report.json
+      - name: Verify complete Dic6 24-element Bob-sector routing law
+        working-directory: verification/adversarial/run
+        run: python stress_test/verify_bob_routing.py
       - name: Verify explicit BCC reference Wilson-overlap calculation
         working-directory: verification/adversarial/run
         run: |
@@ -68,7 +71,7 @@ jobs:
           python - <<'PY'
           import hashlib, pathlib, zipfile
           source=pathlib.Path('verification/adversarial/input/UCD_External_Testing_and_Lean4_CI_Kit_CORRECTED.zip')
-          expected='10ca4ec26767b53c7d8eec536a968315eb743841d90b5c704891b0bb4ea41e9e'
+          expected='a2401cd05dfc21d32064cc3f5c5d1f56e089b5b881e50d9b10ba22dd3c82c08f'
           assert hashlib.sha256(source.read_bytes()).hexdigest()==expected
           out=pathlib.Path('verification/adversarial/run')
           out.mkdir(parents=True,exist_ok=True)
