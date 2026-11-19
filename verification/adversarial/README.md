@@ -40,3 +40,7 @@ The second external run compiled **41/74** proof-source paths and reported 33 fa
 - Two elementary multiplication/parity theorems now use core Lean tactics compatible with Lean 4.14.0; the roadmap product identity uses explicit associativity.
 - An unrelated inconsistent beta arithmetic claim `22*2 - 4*3 - 1 = 19` is **not** silently modified; its actual value is 31, and its physical coefficient needs independent reconciliation.
 - Other existing theorem errors are still CI-failing, with diagnostics retained. Nothing is merged into main.
+
+## Fourth theorem-preserving proof pass
+
+After round 3 GitHub Lean CI compiled 48/74 proof sources and failed 26. Six further algebraically valid theorem statements now receive strictly proof-tactic rewrites (distributivity, commutativity, and linear arithmetic), with no changes to physical constants or claims. Results must be confirmed by the fourth GitHub CI run before any success count is updated.
