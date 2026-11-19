@@ -33,3 +33,10 @@ silently changed to match narrower Lean statements.
 ## Second repair after initial external compiler run
 
 Actual GitHub Lean 4.14.0 compilation discovered an invalid `rec` field name in AddressedCalculusCore (it collides with the generated recursor) and a missing pair of commutativity hypotheses for its abstract discrete Leibniz theorem. The corrected ZIP renames that field to `record`, makes additive/multiplicative commutativity explicit fields of `DiffRing`, and repairs the proof using those hypotheses. An older v18 companion's unbound `State` type binders were also corrected. These amendments are documented in the ZIP README; no claimed noncommutative Leibniz theorem is certified. The compiler now attempts every proof source and saves individual logs even after a prerequisite failure.
+
+## Third conservative repair pass (external Lean 4.14.0)
+The second external run compiled **41/74** proof-source paths and reported 33 failures. Seven exact source files now receive narrowly scoped fixes:
+- Natural-number subtraction expressions with negative intermediate quantities are correctly typed as `Int` for the graph-cycle, black-hole polynomial, and BCC scattering sign identities.
+- Two elementary multiplication/parity theorems now use core Lean tactics compatible with Lean 4.14.0; the roadmap product identity uses explicit associativity.
+- An unrelated inconsistent beta arithmetic claim `22*2 - 4*3 - 1 = 19` is **not** silently modified; its actual value is 31, and its physical coefficient needs independent reconciliation.
+- Other existing theorem errors are still CI-failing, with diagnostics retained. Nothing is merged into main.
