@@ -54,7 +54,7 @@ jobs:
           name: ucd-adversarial-numerics-and-inventory
           path: verification/adversarial/run/results/
   lean-compiler:
-    name: Lean 4 compiler: all 74 proof-source paths
+    name: 'Lean 4 compiler: all 74 proof-source paths'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
