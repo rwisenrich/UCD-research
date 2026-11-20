@@ -28,7 +28,7 @@ def main():
     cwd = pathlib.Path(args.cwd).resolve()
     out.mkdir(parents=True, exist_ok=True)
     sources = sorted(s for s in root.rglob("*.lean")
-                     if s.is_file() and s.name.lower() != "lakefile.lean")
+                     if s.is_file() and not s.name.lower().endswith("lakefile.lean"))
     if not sources:
         raise SystemExit(f"No proof-source .lean files found under {root}")
 

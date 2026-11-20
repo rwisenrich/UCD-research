@@ -27,6 +27,7 @@ jobs:
           elan default leanprover/lean4:v4.14.0
           lean --version
       - name: Compile every unchanged Drive source and collect diagnostics
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
@@ -35,12 +36,30 @@ jobs:
             --cwd . \
             --output verification/unified_lean/results/drive-v4.14 \
             --seconds 180
+      - name: Prepare separate transport-normalized Lean copies (theorems unchanged)
+        shell: bash
+        run: |
+          python3 verification/unified_lean/normalize_transport.py \
+            --src verification/unified_lean/google_drive \
+            --out verification/unified_lean/results/drive-normalized-sources
+      - name: Compile all transport-normalized theorem sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 verification/unified_lean/run_lean_audit.py \
+            --root verification/unified_lean/results/drive-normalized-sources \
+            --cwd . \
+            --output verification/unified_lean/results/drive-normalized-logs \
+            --seconds 180
       - name: Upload per-file source digest, compiler and theorem audit
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ucd-drive-34-lean-compiler
-          path: verification/unified_lean/results/drive-v4.14/
+          path: |
+            verification/unified_lean/results/drive-v4.14/
+            verification/unified_lean/results/drive-normalized-sources/TRANSPORT_NORMALIZATION_MANIFEST.json
+            verification/unified_lean/results/drive-normalized-logs/
           if-no-files-found: warn
 
   archive-originals:
