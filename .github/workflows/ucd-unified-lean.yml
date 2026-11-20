@@ -1,0 +1,139 @@
+name: UCD Unified Lean Source Audit
+on:
+  push:
+    branches: ['audit/ucd-adversarial-regression-2026-11-19']
+    paths:
+      - 'verification/unified_lean/**'
+      - '.github/workflows/ucd-unified-lean.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  drive-originals:
+    name: Drive 34 original Lean theorem sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean 4.14.0 compiler
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          elan toolchain install leanprover/lean4:v4.14.0
+          elan default leanprover/lean4:v4.14.0
+          lean --version
+      - name: Compile every unchanged Drive source and collect diagnostics
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 verification/unified_lean/run_lean_audit.py \
+            --root verification/unified_lean/google_drive \
+            --cwd . \
+            --output verification/unified_lean/results/drive-v4.14 \
+            --seconds 180
+      - name: Prepare separate transport-normalized Lean copies (theorems unchanged)
+        shell: bash
+        run: |
+          python3 verification/unified_lean/normalize_transport.py \
+            --src verification/unified_lean/google_drive \
+            --out verification/unified_lean/results/drive-normalized-sources
+      - name: Compile all transport-normalized theorem sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 verification/unified_lean/run_lean_audit.py \
+            --root verification/unified_lean/results/drive-normalized-sources \
+            --cwd . \
+            --output verification/unified_lean/results/drive-normalized-logs \
+            --seconds 180
+      - name: Upload per-file source digest, compiler and theorem audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ucd-drive-34-lean-compiler
+          path: |
+            verification/unified_lean/results/drive-v4.14/
+            verification/unified_lean/results/drive-normalized-sources/TRANSPORT_NORMALIZATION_MANIFEST.json
+            verification/unified_lean/results/drive-normalized-logs/
+          if-no-files-found: warn
+
+  archive-originals:
+    name: Adversarial 74 proof-source archive
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract SHA256-pinned original archived proof sources
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, pathlib, zipfile
+          source = pathlib.Path('verification/adversarial/input/UCD_External_Testing_and_Lean4_CI_Kit_CORRECTED.zip')
+          expected = 'a2401cd05dfc21d32064cc3f5c5d1f56e089b5b881e50d9b10ba22dd3c82c08f'
+          assert hashlib.sha256(source.read_bytes()).hexdigest() == expected, 'ZIP digest mismatch'
+          out = pathlib.Path('verification/adversarial/run')
+          out.mkdir(parents=True, exist_ok=True)
+          with zipfile.ZipFile(source) as z:
+              for item in z.infolist():
+                  path = pathlib.PurePosixPath(item.filename)
+                  assert not path.is_absolute() and '..' not in path.parts and item.file_size < 10_000_000
+              z.extractall(out)
+          print('Archive digest verified and extracted')
+          PY
+      - name: Install historical pinned Lean compiler
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          TOOLCHAIN="$(cat verification/adversarial/run/lean-toolchain)"
+          elan toolchain install "$TOOLCHAIN"
+          elan default "$TOOLCHAIN"
+          lean --version
+      - name: Compile every original proof source and preserve all failures
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 verification/unified_lean/run_lean_audit.py \
+            --root verification/adversarial/run \
+            --cwd verification/adversarial/run \
+            --output verification/unified_lean/results/archive-v4.14 \
+            --seconds 180
+      - name: Upload all 74 source compiler diagnostic logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ucd-archive-74-lean-compiler
+          path: verification/unified_lean/results/archive-v4.14/
+          if-no-files-found: warn
+
+  mathlib-v21:
+    name: Existing v21 Lean and Mathlib independent checker
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Initialize v21 Lean and Mathlib manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          cd verification/ucd_v21/lean4
+          lake update
+      - name: Compile v21 library and run kernel checker
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: verification/ucd_v21/lean4
+          auto-config: false
+          build: true
+          leanchecker: true
+          leanchecker-args: UCDVerification
+          use-mathlib-cache: true

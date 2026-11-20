@@ -1,0 +1,45 @@
+{
+  "archive": "09-UCD_504_Full_Cluster_Leakage_Stress_Workbench.zip",
+  "sha256": "2877c43706ba940ff908d440da9a7227aa875d1b0d7b68133b836dfa44683472",
+  "inspection": "All six members read in full, including the complete numerical generator and every CSV/JSON value.",
+  "data_origin": "Synthetic 84-dimensional quantum Hamiltonian/control simulation using seeded numpy.random.default_rng, matrix exponentials, and fixed UCD operators.",
+  "scope": "UCD quantum error correction research expressly included in the requested public consolidation.",
+  "personal_data": "No persons, identifiers, credentials, personal records, external user datasets, or cryptographic/mining research appear in the six members.",
+  "generator_inputs": "Internally constructed H504 Hamiltonian, Dic6 representation matrices, prescribed pulse/noise settings and deterministic seeds.",
+  "trial_count": 32,
+  "aggregate_rows": 16,
+  "aggregate_comparisons_passed": 192,
+  "status": "PUBLIC_UCD_SIMULATION_CONTENT_REVIEWED",
+  "files": [
+    {
+      "path": "ucd_504_full_cluster_leakage_stress/full84_trials.csv",
+      "bytes": 4825,
+      "sha256": "fd0db852c51334a9410661b707aeeeef517901b97043361c6accb42461713a31"
+    },
+    {
+      "path": "ucd_504_full_cluster_leakage_stress/full84_aggregate.csv",
+      "bytes": 4431,
+      "sha256": "76683afcd6140ede752de203e6e377abe4d3dec2c1f94267b48660ccea91cfd7"
+    },
+    {
+      "path": "ucd_504_full_cluster_leakage_stress/full84_best_pulses.csv",
+      "bytes": 603,
+      "sha256": "0159d713d03850716a249d540cd703b58c1555d8be9905840d6752b676cf12d2"
+    },
+    {
+      "path": "ucd_504_full_cluster_leakage_stress/full84_summary.json",
+      "bytes": 2159,
+      "sha256": "8e8289d59061b55b07a49488713afac49964d5d50b67df295c09c27c850c10d7"
+    },
+    {
+      "path": "ucd_504_full_cluster_leakage_stress/Full84_Leakage_Stress_Report.md",
+      "bytes": 1046,
+      "sha256": "3f5373f8b55ec0228c2aca5c6d74f76547a397e518e845d14970085533689d68"
+    },
+    {
+      "path": "ucd_504_full_cluster_leakage_stress/full84_leakage_stress.py",
+      "bytes": 11735,
+      "sha256": "771ad79cbba8fb1399b18c6e8408639b2351f79435317f98f9472873cbf70c0a"
+    }
+  ]
+}

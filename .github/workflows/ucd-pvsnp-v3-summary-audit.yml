@@ -1,0 +1,20 @@
+name: UCD P vs NP reported v3 table arithmetic
+on:
+  push:
+    branches: ['audit/ucd-adversarial-regression-2026-11-19']
+    paths:
+      - 'verification/pvsnp/v3-2026-11-19/**'
+      - '.github/workflows/ucd-pvsnp-v3-summary-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reported-arithmetic-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify reported arithmetic (not solver replication)
+        run: python verification/pvsnp/v3-2026-11-19/check_reported_statistics.py

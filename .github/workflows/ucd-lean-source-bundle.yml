@@ -1,0 +1,98 @@
+name: UCD Unified Lean Source Bundle
+on:
+  push:
+    branches: ['audit/ucd-adversarial-regression-2026-11-19']
+    paths:
+      - '.github/workflows/ucd-lean-source-bundle.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preserve-and-bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Package original and transport-normalized Lean sources
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, pathlib, subprocess, zipfile
+          root = pathlib.Path('.')
+          dist = root / 'dist'
+          dist.mkdir(exist_ok=True)
+          original_archive = root / 'verification/adversarial/input/UCD_External_Testing_and_Lean4_CI_Kit_CORRECTED.zip'
+          original_sha = 'a2401cd05dfc21d32064cc3f5c5d1f56e089b5b881e50d9b10ba22dd3c82c08f'
+          assert hashlib.sha256(original_archive.read_bytes()).hexdigest() == original_sha
+          drive = root / 'verification/unified_lean/google_drive'
+          drive_files = sorted(drive.glob('*.lean'))
+          assert len(drive_files) == 34, f'Expected 34 Drive sources, got {len(drive_files)}'
+          norm = dist / '_normalized_drive'
+          subprocess.run(['python3','verification/unified_lean/normalize_transport.py',
+                          '--src',str(drive),'--out',str(norm)],check=True)
+          archived_files = []
+          with zipfile.ZipFile(original_archive) as z:
+              for item in z.infolist():
+                  p = pathlib.PurePosixPath(item.filename)
+                  assert not p.is_absolute() and '..' not in p.parts
+                  if item.filename.lower().endswith('.lean') and not p.name.lower().endswith('lakefile.lean'):
+                      archived_files.append((item.filename,z.read(item.filename)))
+          assert len(archived_files)==74, f'Expected 74 historical source paths, got {len(archived_files)}'
+          v21 = root / 'verification/ucd_v21/lean4'
+          v21_files = sorted(v21.rglob('*.lean'))
+          assert len(v21_files)==4, f'Expected 4 v21 Lean modules, got {len(v21_files)}'
+          out = dist / 'UCD_ALL_LEAN_SOURCES_2026_11_19.zip'
+          manifest = []
+          def put(z,path,data,category):
+              z.writestr(path,data)
+              manifest.append(dict(path=path,category=category,bytes=len(data),
+                                   sha256=hashlib.sha256(data).hexdigest()))
+          with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as bundle:
+              for path in drive_files:
+                  put(bundle,'drive_34_originals/'+path.name,path.read_bytes(),'drive_original')
+              for path in sorted(norm.glob('*.lean')):
+                  put(bundle,'drive_34_compiler_copies/'+path.name,path.read_bytes(),'drive_normalized')
+              put(bundle,'drive_34_compiler_copies/TRANSPORT_NORMALIZATION_MANIFEST.json',
+                  (norm/'TRANSPORT_NORMALIZATION_MANIFEST.json').read_bytes(),'transport_manifest')
+              for name,data in archived_files:
+                  put(bundle,'archive_74_originals/'+name,data,'historical_archive')
+              put(bundle,'original_archives/'+original_archive.name,original_archive.read_bytes(),'original_archive_zip')
+              for path in v21_files:
+                  put(bundle,'v21_mathlib/'+path.relative_to(v21).as_posix(),path.read_bytes(),'v21_lean')
+              for conf in ('lakefile.toml','lake-manifest.json','lean-toolchain'):
+                  p=v21/conf
+                  if p.is_file():
+                      put(bundle,'v21_mathlib/'+conf,p.read_bytes(),'v21_config')
+              for p in [root/'verification/unified_lean/run_lean_audit.py',
+                        root/'verification/unified_lean/normalize_transport.py',
+                        root/'.github/workflows/ucd-unified-lean.yml']:
+                  put(bundle,'verification_tools/'+p.name,p.read_bytes(),'verification_tool')
+              readme = '''# Unified Coherence Dynamics — Complete Lean Source Audit Bundle
+          
+          This is a collection of original research source files and verification tooling, not a certificate that every physical theorem is proved.
+          
+          Original cohorts:
+          - 74 historical proof-source paths from the pinned adversarial archive, preserved separately.
+          - 34 additional Google Drive theorem sources, original bytes unchanged.
+          - 4 v21 Lean/Mathlib modules, plus pinned project configuration.
+          
+          The 34 separate compiler copies remove only Google Docs transport artifacts (leading byte-order marks, one display filename line, and two code-block presentation markers); the exact differences and hashes are recorded in TRANSPORT_NORMALIZATION_MANIFEST.json.
+          
+          Compile each original source independently to preserve errors and avoid duplicate declaration names; see the GitHub unified workflow and run_lean_audit.py. The archived historical paths have aliases; path counts are not unique theorem counts.
+          
+          GitHub CI evidence: https://github.com/rwisenrich/UCD-research/actions/runs/44647433354
+          Source branch: https://github.com/rwisenrich/UCD-research/tree/audit/ucd-adversarial-regression-2026-11-19
+              '''
+              put(bundle,'README_START_HERE.md',readme.encode(),'readme')
+              bundle.writestr('SHA256_SOURCE_MANIFEST.json',json.dumps({'files':manifest},indent=2)+'\n')
+          with zipfile.ZipFile(out) as check:
+              assert check.testzip() is None
+          print('SOURCE BUNDLE CREATED',out,'size',out.stat().st_size)
+          print('COHORTS:',len(archived_files),'archive,',len(drive_files),'Drive,',len(v21_files),'v21')
+          PY
+      - name: Make single complete Lean-source ZIP downloadable
+        uses: actions/upload-artifact@v4
+        with:
+          name: ucd-all-lean-sources-2026-11-19
+          path: dist/UCD_ALL_LEAN_SOURCES_2026_11_19.zip
+          if-no-files-found: error

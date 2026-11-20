@@ -1,0 +1,105 @@
+name: UCD External Adversarial and Lean 4 CI
+on:
+  push:
+    branches: ['audit/ucd-adversarial-regression-2026-11-19']
+    paths:
+      - 'verification/adversarial/**'
+      - '.github/workflows/ucd-external-lean-ci.yml'
+  pull_request:
+    paths:
+      - 'verification/adversarial/**'
+      - '.github/workflows/ucd-external-lean-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  math-and-inventory:
+    name: Reproducible adversarial numerical and static controls
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Extract SHA-256 pinned corrected UCD test kit
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib, zipfile
+          source=pathlib.Path('verification/adversarial/input/UCD_External_Testing_and_Lean4_CI_Kit_CORRECTED.zip')
+          expected='a2401cd05dfc21d32064cc3f5c5d1f56e089b5b881e50d9b10ba22dd3c82c08f'
+          assert hashlib.sha256(source.read_bytes()).hexdigest()==expected, 'ZIP digest mismatch'
+          out=pathlib.Path('verification/adversarial/run')
+          out.mkdir(parents=True,exist_ok=True)
+          with zipfile.ZipFile(source) as z:
+              for item in z.infolist():
+                  p=pathlib.PurePosixPath(item.filename)
+                  assert not p.is_absolute() and '..' not in p.parts and item.file_size<10_000_000
+              z.extractall(out)
+          print('Verified and extracted corrected kit.')
+          PY
+      - name: Verify independent statistical, dispersion and source-inventory controls
+        working-directory: verification/adversarial/run
+        run: python stress_test/ucd_adversarial_stress_test.py --output results/stress_test_report.json
+      - name: Verify complete Dic6 24-element Bob-sector routing law
+        working-directory: verification/adversarial/run
+        run: python stress_test/verify_bob_routing.py
+      - name: Verify explicit BCC reference Wilson-overlap calculation
+        working-directory: verification/adversarial/run
+        run: |
+          python -m pip install 'numpy>=1.24,<3'
+          python stress_test/reference_overlap_check.py
+      - name: Preserve reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ucd-adversarial-numerics-and-inventory
+          path: verification/adversarial/run/results/
+  lean-compiler:
+    name: 'Lean 4 compiler: all 74 proof-source paths'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Extract SHA-256 pinned corrected Lean sources
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib, zipfile
+          source=pathlib.Path('verification/adversarial/input/UCD_External_Testing_and_Lean4_CI_Kit_CORRECTED.zip')
+          expected='a2401cd05dfc21d32064cc3f5c5d1f56e089b5b881e50d9b10ba22dd3c82c08f'
+          assert hashlib.sha256(source.read_bytes()).hexdigest()==expected
+          out=pathlib.Path('verification/adversarial/run')
+          out.mkdir(parents=True,exist_ok=True)
+          with zipfile.ZipFile(source) as z:
+              for item in z.infolist():
+                  p=pathlib.PurePosixPath(item.filename)
+                  assert not p.is_absolute() and '..' not in p.parts and item.file_size<10_000_000
+              z.extractall(out)
+          PY
+      - name: Install exact archive Lean 4 toolchain
+        working-directory: verification/adversarial/run
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          export PATH="$HOME/.elan/bin:$PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          elan default "$(cat lean-toolchain)"
+          lean --version
+      - name: Compile every proof-source file and fail on compiler errors
+        working-directory: verification/adversarial/run
+        shell: bash
+        run: |
+          export PATH="$HOME/.elan/bin:$PATH"
+          bash stress_test/compile_all_lean.sh
+      - name: Preserve Lean compiler diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ucd-lean4-74-source-compiler-logs
+          path: verification/adversarial/run/results/lean_compilation/
