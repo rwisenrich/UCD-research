@@ -68,21 +68,21 @@ jobs:
                         root/'.github/workflows/ucd-unified-lean.yml']:
                   put(bundle,'verification_tools/'+p.name,p.read_bytes(),'verification_tool')
               readme = '''# Unified Coherence Dynamics — Complete Lean Source Audit Bundle
-
-This is a collection of original research source files and verification tooling, not a certificate that every physical theorem is proved.
-
-Original cohorts:
-- 74 historical proof-source paths from the pinned adversarial archive, preserved separately.
-- 34 additional Google Drive theorem sources, original bytes unchanged.
-- 4 v21 Lean/Mathlib modules, plus pinned project configuration.
-
-The 34 separate compiler copies remove only Google Docs transport artifacts (leading byte-order marks, one display filename line, and two code-block presentation markers); the exact differences and hashes are recorded in TRANSPORT_NORMALIZATION_MANIFEST.json.
-
-Compile each original source independently to preserve errors and avoid duplicate declaration names; see the GitHub unified workflow and run_lean_audit.py. The archived historical paths have aliases; path counts are not unique theorem counts.
-
-GitHub CI evidence: https://github.com/rwisenrich/UCD-research/actions/runs/44647433354
-Source branch: https://github.com/rwisenrich/UCD-research/tree/audit/ucd-adversarial-regression-2026-11-19
-'''
+          
+          This is a collection of original research source files and verification tooling, not a certificate that every physical theorem is proved.
+          
+          Original cohorts:
+          - 74 historical proof-source paths from the pinned adversarial archive, preserved separately.
+          - 34 additional Google Drive theorem sources, original bytes unchanged.
+          - 4 v21 Lean/Mathlib modules, plus pinned project configuration.
+          
+          The 34 separate compiler copies remove only Google Docs transport artifacts (leading byte-order marks, one display filename line, and two code-block presentation markers); the exact differences and hashes are recorded in TRANSPORT_NORMALIZATION_MANIFEST.json.
+          
+          Compile each original source independently to preserve errors and avoid duplicate declaration names; see the GitHub unified workflow and run_lean_audit.py. The archived historical paths have aliases; path counts are not unique theorem counts.
+          
+          GitHub CI evidence: https://github.com/rwisenrich/UCD-research/actions/runs/44647433354
+          Source branch: https://github.com/rwisenrich/UCD-research/tree/audit/ucd-adversarial-regression-2026-11-19
+              '''
               put(bundle,'README_START_HERE.md',readme.encode(),'readme')
               bundle.writestr('SHA256_SOURCE_MANIFEST.json',json.dumps({'files':manifest},indent=2)+'\n')
           with zipfile.ZipFile(out) as check:
