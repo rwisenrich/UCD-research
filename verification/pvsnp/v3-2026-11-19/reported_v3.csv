@@ -1,0 +1,5 @@
+n,m,walksat_success,flow_success,hybrid_success,walksat_med_flips,hybrid_med_flips,walksat_med_ms,hybrid_med_ms,mean_handoff_unsatisfied
+75,320,10,9,10,436,88,6.5,14.1,0.8
+100,427,9,3,10,1035,1890,153.2,132.7,1.4
+150,640,10,0,9,18706,11192,251.3,301.1,2.8
+200,853,10,3,10,4760,4367,126.4,184.8,2.8
